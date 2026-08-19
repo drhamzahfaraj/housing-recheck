@@ -30,10 +30,12 @@ html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:'Tajawal',system-ui,'Segoe UI',sans-serif;line-height:1.55;font-size:16px}
 .wrap{max-width:900px;margin:0 auto;padding:14px calc(12px + var(--safe-r)) calc(90px + var(--safe-b)) calc(12px + var(--safe-l))}
 
-header.app{background:linear-gradient(135deg,var(--brand) 0%,var(--brand-d) 100%);color:#fff;border-radius:18px;padding:18px 18px calc(18px + var(--safe-t));box-shadow:var(--shadow);position:relative;overflow:hidden;margin-top:var(--safe-t)}
+header.app{background:linear-gradient(135deg,var(--brand) 0%,var(--brand-d) 100%);color:#fff;border-radius:18px;padding:16px 18px;box-shadow:0 6px 18px rgba(20,40,35,.14);overflow:hidden;position:sticky;top:0;z-index:30}
 header.app::after{content:"";position:absolute;left:-40px;top:-40px;width:170px;height:170px;background:rgba(255,255,255,.09);border-radius:50%}
 .rev{display:flex;align-items:center;gap:9px;position:relative;z-index:1}
-.rev .dot{width:15px;height:15px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.25)}
+.rev .dot{width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.rev .led{width:10px;height:10px;border-radius:50%;background:var(--red);transition:background .25s}
+.rev .led.ok{background:var(--green)}
 .rev .who{font-weight:800;font-size:15px}
 header.app h1{margin:8px 0 0;font-size:19px;font-weight:800;letter-spacing:-.3px}
 header.app p{margin:5px 0 0;opacity:.92;font-size:12.5px}
@@ -46,13 +48,6 @@ header.app p{margin:5px 0 0;opacity:.92;font-size:12.5px}
 .progress .fill{height:100%;background:#fff;border-radius:999px;transition:width .4s ease}
 .progress .lbl{font-size:12px;opacity:.94;margin-top:6px}
 
-.syncbar{display:flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-top:12px;box-shadow:var(--shadow);font-size:14px;cursor:pointer;min-height:46px}
-.syncbar:active{background:#f4f6f4}
-.syncbar .dotst{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-.st-ok{background:var(--green)} .st-off{background:var(--amber)} .st-err{background:var(--red)}
-.syncbar .msg{font-weight:700}
-.syncbar .pending{color:var(--muted)}
-.syncbar .spacer{flex:1}
 
 .controls{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px;margin-top:12px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .controls .grp{display:flex;flex-direction:column;gap:3px;min-width:0}
@@ -130,7 +125,7 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:12px}
 <body>
 <div class="wrap">
   <header class="app">
-    <div class="rev"><span class="dot"></span><span class="who">عايض نوار البقمي</span></div>
+    <div class="rev"><span class="dot" id="sync-dot" onclick="manualSync()" title="حالة المزامنة"><span class="led" id="sync-led"></span></span><span class="who">عايض نوار البقمي</span></div>
     <h1>المراجعة الثانية للغرف</h1>
     <p>السكن الطلابي · المبنى ١ و ٣ · الغرف المُسندة إليك</p>
     <div class="metrics">
@@ -145,17 +140,12 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:12px}
     </div>
   </header>
 
-  <div class="syncbar" id="syncbar" onclick="manualSync()" title="اضغط للمزامنة">
-    <span class="dotst st-err" id="sync-dot"></span>
-    <span class="msg" id="sync-msg">غير متزامن</span>
-  </div>
 
   <div class="controls">
     <div class="grp"><label>المبنى</label><select id="f-building"><option value="">الكل</option></select></div>
     <div class="grp"><label>الدور</label><select id="f-floor"><option value="">الكل</option></select></div>
     <div class="grp"><label>الحالة</label><select id="f-state"><option value="">الكل</option><option value="incomplete">غير مكتملة</option><option value="partial">جزئيًا</option><option value="complete">مكتملة</option></select></div>
     <div class="grp"><label>نوع المفروشات</label><select id="f-furn"><option value="">الكل</option></select></div>
-    <div class="grp wide"><label>بحث</label><input type="search" id="f-search" placeholder="رقم الغرفة أو النوع..."></div>
   </div>
 
   <div class="roomlist" id="list"></div>
@@ -203,12 +193,11 @@ function statusOf(r){ if(!furnitureDone(r)) return 'incomplete'; if(needsMainten
 })();
 function filtered(){
   const g=id=>document.getElementById(id).value;
-  const b=g('f-building'),fl=g('f-floor'),st=g('f-state'),mt=g('f-furn'),q=g('f-search').trim();
+  const b=g('f-building'),fl=g('f-floor'),st=g('f-state'),mt=g('f-furn');
   return SEED.filter(r=>{
     if(b&&String(r.building)!==b)return false;
     if(fl&&String(r.floor)!==fl)return false;
     if(mt&&!r.furnItems.includes(mt))return false;
-    if(q&&!(r.code.includes(q)||r.type.includes(q)))return false;
     if(st && statusOf(r)!==st) return false;
     return true;
   });
@@ -303,10 +292,9 @@ function enqueue(id){ if(!outbox.includes(id)) outbox.push(id); persistOutbox();
 let flushTimer=null;
 function scheduleFlush(){ if(!SHEET_ENDPOINT)return; clearTimeout(flushTimer); flushTimer=setTimeout(flush,2500); }
 function updateSyncUI(){
-  const dot=document.getElementById('sync-dot'),msg=document.getElementById('sync-msg');
+  const led=document.getElementById('sync-led');
   const synced = SHEET_ENDPOINT && outbox.length===0;
-  dot.className='dotst '+(synced?'st-ok':'st-err');
-  msg.textContent = synced ? 'متزامن' : 'غير متزامن';
+  if(led) led.className='led'+(synced?' ok':'');
 }
 function manualSync(){ if(!SHEET_ENDPOINT) return; if(outbox.length){ flush(); toast('جارٍ المزامنة'); } }
 async function flush(){
@@ -322,7 +310,6 @@ async function flush(){
 
 
 ['f-building','f-floor','f-state','f-furn'].forEach(id=>document.getElementById(id).onchange=render);
-document.getElementById('f-search').oninput=render;
 window.addEventListener('online',flush);
 updateSyncUI(); render(); flush();
 </script>
