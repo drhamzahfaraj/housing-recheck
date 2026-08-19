@@ -73,7 +73,7 @@ header.app p{margin:5px 0 0;opacity:.92;font-size:12.5px}
 .chip-code{background:var(--ink);color:#fff;font-weight:800;font-size:13px;padding:7px 10px;border-radius:9px;letter-spacing:.5px;white-space:nowrap;flex-shrink:0}
 .card .meta{flex:1;min-width:0}
 .card .meta .line1{font-weight:700;font-size:14.5px}
-.card .meta .line2{font-size:11.5px;color:var(--muted);margin-top:2px}
+.card .meta .line2{font-size:12.5px;color:#4a5551;margin-top:3px;font-weight:500;line-height:1.5}
 .state{font-size:11.5px;font-weight:800;padding:6px 10px;border-radius:999px;white-space:nowrap;flex-shrink:0}
 .state.ready{background:var(--green-soft);color:var(--green)}
 .state.notready{background:var(--red-soft);color:var(--red)}
@@ -244,8 +244,8 @@ function cardHTML(r){
   return `<div class="card ${open}" data-id="${r.id}">
     <div class="top" onclick="toggleCard('${r.id}')">
       <span class="chip-code">${r.code}</span>
-      <div class="meta"><div class="line1">${r.type} · مبنى ${arNum(r.building)} · الدور ${arNum(r.floor)}</div>
-      <div class="line2">القسم ${r.section?arNum(r.section):'—'}</div></div>
+      <div class="meta"><div class="line1">${r.type}</div>
+      <div class="line2">المبنى ${arNum(r.building)} · الدور ${arNum(r.floor)} · الجزء ${arNum(r.section)} · الغرفة ${arNum(r.roomno)}</div></div>
       ${rc.synced?'<span class="synced">✓</span>':''}
       ${stateBadge(r)}<span class="caret">▾</span>
     </div>
