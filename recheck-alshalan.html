@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#16A34A">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="مراجعة الشعلان">
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%20%22%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D8%A7%D9%84%D8%AB%D8%A7%D9%86%D9%8A%D8%A9%20%E2%80%94%20%D8%B9%D8%A8%D8%AF%D8%A7%D9%84%D8%B9%D8%B2%D9%8A%D8%B2%20%D8%AF%D8%AE%D9%8A%D9%84%20%D8%A7%D9%84%D8%B4%D8%B9%D9%84%D8%A7%D9%86%22%2C%20%22short_name%22%3A%20%22%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D8%A7%D9%84%D8%B4%D8%B9%D9%84%D8%A7%D9%86%22%2C%20%22display%22%3A%20%22standalone%22%2C%20%22orientation%22%3A%20%22portrait%22%2C%20%22background_color%22%3A%20%22%23eef1ee%22%2C%20%22theme_color%22%3A%20%22%2316A34A%22%2C%20%22icons%22%3A%20%5B%7B%22src%22%3A%20%22data%3Aimage/png%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAIAAAB7GkOtAAAOBklEQVR4nO3czY3cRheG0fEHxTAbLSTYeUwEdkzGpGRl4DwMSAttHMW3aKAlT/f0D8lm3brvOStBwKALIHmfqpaGv/z61%2B9PAOT53%2BgFADCGAACEEgCAUAIAEEoAAEIJAEAoAQAIJQAAoQQAIJQAAIQSAIBQAgAQSgAAQgkAQCgBAAglAAChBAAglAAAhBIAgFACABBKAABCCQBAKAEACCUAAKEEACCUAACEEgCAUAIAEEoAAEIJAEAoAQAIJQAAoQQAIJQAAIQSAIBQAgAQSgAAQgkAQCgBAAglAAChBAAglAAAhBIAgFACABBKAABCCQBAKAEACCUAAKEEACCUAACEEgCAUAIAEEoAAEIJAEAoAQAIJQAAoQQAIJQAAIQSAIBQAgAQSgAAQgkAQCgBAAglAAChBAAglAAAhBIAgFACABBKAABCCQBAKAEACCUAAKEEACCUAACEEgCAUAIAEEoAAEIJAEAoAQAIJQAAoQQAIJQAAIQSAIBQAgAQSgAAQgkAQCgBAAglAAChBAAglAAAhBIAgFACABBKAABCCQBAKAEACPVh9AJ4658/voxeAjzKb1/%2BGL0Efvjl179%2BH72GdCY%2BsfRgLAEYxtyHIyUYQgD2Zu7DBUqwJwHYj9EPN5KBfQjAHox%2BWEAGHk0AHsvoh5Vk4HH8HsADmf6wnufocQTgUdy1sBVP04P4Cmh7blZ4EF8HbcsJYGOmPzyO52tbArAldyc8mqdsQwKwGfcl7MOzthUB2IY7EvbkiduEAGzAvQj789ytJwBruQthFE/fSgKwivsPxvIMriEAy7nzoAJP4mICABBKABay6YA6PI/LCMAS7jaoxlO5gADczX0GNXk27yUAAKEE4D62GFCZJ/QuAgAQSgDuYHMB9XlObycAAKEE4Fa2FTALT%2BuNBAAglAAAhBKAmzhRwlw8s7cQAIBQAgAQSgCuc5aEGXlyrxIAgFACABBKAABCCQBAKAG4wr8jwbw8v5cJAEAoAQAIJQAAoQQAIJQAAIQSAIBQAgAQ6sPoBbCB59eXfT7o3z//3ueDgB0IwMR2m/unn6gE0ICvgGa1//Sv8%2BnAJpwA5lNk%2BB6W4SgA83ICmEyR6X9UbT3A7QRgJjWnbc1VAVcJAEAoAZhG5Y125bUB7xGAOdSfsPVXCLwhAAChBAAglABMYJZvV2ZZJ3AgAAChBAAglABwnfc9QEsCwBWH6a8B0I%2BXwXHJz3P/8OdR/9L79fu3IZ/L09PT54%2BfRi%2BBh3AC4D77HwW%2Bfv9m%2Bo/lEnTlBMC73pv1ux0FDJ1SDpfDaaATJwDOu7zTN/1juS6dCABnmP5c4Oq0IQCUY77U5xr1IAC8NXz7D%2BxDAPiP4dPf1nIWrlQDAsAPw6c/sCcB6GbqX9m1qZyL6zU7AWhlzWsbbP8hjQD0cfrahmU/e8r0h5YEoInTCX57A0x/yCQAHVx%2BZ8OynwXaE4DpXZ7gK%2Be77T80JgBzW7nH9%2BUPJBOAud04o88O%2BoLT35sm5%2BJ6zU4ApresAQWnP7AzAehgzTmgGpvKWbhSDQhAE3c1wPYfeBKATjY5B1SY/raW9blGPQhAKyvHd4Xpf2C%2BVObqtCEA3dQZ4iuZMjW5Lp0IQEPLGlCwHJ8/fjJu6nA5%2BhGAnu6d5gWn/5G5M5xL0NWH0QvgUZ5fX278f5%2BVp/%2BRAQSbcwLobIrJDowiAM2dNuD59eXnvxQJiCUA/Z0d94c/mP6QTAAinB33pj%2BEE4AJbPIOnx3G/RTvGgKOBAAglAAAhBKAOdT/dqX%2BCoE3BGAalSds5bUB7xEAgFACMJOaG%2B2aqwKuEoDJVJu21dYD3M7L4OZzmLnDf43L6IfZOQHMauz8Nf2hASeAiR2n8G6nAXMfOhGADsxlYAFfAQGEEgCAUAIAEEoAAEIJAEAoAQAIJQAAoQQAIJQAAIQSAIBQAgAQSgAAQgkAQCgBAAglAAChBAAglAAAhBIAgFACABBKAABCCQBAKAEACCUAAKEEACCUAACEEgCAUAIAEEoAAEIJAEAoAQAI9WH0AtjA8%2BvLPh/0759/7/NBwA4EYGK7zf3TT1QCaMBXQLPaf/rX%2BXRgE04A8ykyfA/LcBSAeTkBTKbI9D%2Bqth7gdgIwk5rTtuaqgKsEACCUAEyj8ka78tqA9wjAHOpP2PorBN4QAIBQAgAQSgAmMMu3K7OsEzgQAIBQAgAQSgC4zvseoCUB4IrD9NcA6MfL4Ljk57l/%2BPOof%2Bn9%2Bv3bkM/l6enp88dPo5fAQzgBcJ/9jwJfv38z/cdyCbpyAuBd78363Y4Chk4ph8vhNNCJEwDnXd7pm/6xXJdOBIAzTH8ucHXaEADKMV/qc416EADeGr79B/YhAPzH8OlvazkLV6oBAeCH4dMf2JMAdDP1r%2BzaVM7F9ZqdALSy5rUNtv%2BQRgD6OH1tw7KfPWX6Q0sC0MTpBL%2B9AaY/ZBKADi6/s2HZzwLtCcD0Lk/wlfPd9h8aE4C5rdzj%2B/IHkgnA3G6c0WcHfcHp702Tc3G9ZicA01vWgILTH9iZAHSw5hxQjU3lLFypBgSgibsaYPsPPAlAJ5ucAypMf1vL%2BlyjHgSglZXju8L0PzBfKnN12hCAbuoM8ZVMmZpcl04EoKFlDShYjs8fPxk3dbgc/QhAT/dO84LT/8jcGc4l6OrD6AXwKM%2BvLzf%2Bv8/K0//IAILNOQF0NsVkB0YRgOZOG/D8%2BvLzX4oExBKA/s6O%2B8MfTH9IJgARzo570x/CCcAENnmHzw7jfop3DQFHAgAQSgAAQgnAHOp/u1J/hcAbAjCNyhO28tqA9wgAQCgBmEnNjXbNVQFXCcBkqk3bausBbudlcPM5zNzhv8Zl9MPsnABmNXb%2Bmv7QgBPAxI5TeLfTgLkPnQhAB%2BYysICvgABCCQBAKAEACCUAAKEEACCUAACEEgCAUAIAEEoAAEIJAEAoAQAIJQAAoQQAIJQAAIQSAIBQAgAQSgAAQgkAQCgBAAglAAChBAAglAAAhBIAgFACABBKAABCCQBAKAEACCUAAKEEACCUAACE%2BjB6AWzg%2BfVlnw/698%2B/9/kgYAcCMLHd5v7pJyoBNOAroFntP/3rfDqwCSeA%2BRQZvodlOArAvJwAJlNk%2Bh9VWw9wOwGYSc1pW3NVwFUCABBKAKZReaNdeW3AewRgDvUnbP0VAm8IAEAoAQAIJQATmOXblVnWCRwIAEAoAQAIJQBc530P0JIAcMVh%2BmsA9ONlcFzy89w//HnUv/R%2B/f5tyOfy9PT0%2BeOn0UvgIZwAuM/%2BR4Gv37%2BZ/mO5BF05AfCu92b9bkcBQ6eUw%2BVwGujECYDzLu/0Tf9YrksnAsAZpj8XuDptCADlmC/1uUY9CABvDd/%2BA/sQAP5j%2BPS3tZyFK9WAAPDD8OkP7EkAupn6V3ZtKufies1OAFpZ89oG239IIwB9nL62YdnPnjL9oSUBaOJ0gt/eANMfMglAB5ff2bDsZ4H2BGB6lyf4yvlu%2Bw%2BNCcDcVu7xffkDyQRgbjfO6LODvuD096bJubhesxOA6S1rQMHpD%2BxMADpYcw6oxqZyFq5UAwLQxF0NsP0HngSgk03OARWmv61lfa5RDwLQysrxXWH6H5gvlbk6bQhAN3WG%2BEqmTE2uSycC0NCyBhQsx%2BePn4ybOlyOfgSgp3unecHpf2TuDOcSdPVh9AJ4lOfXlxv/32fl6X9kAMHmnAA6m2KyA6MIQHOnDXh%2Bffn5L0UCYglAf2fH/eEPpj8kE4AIZ8e96Q/hBGACm7zDZ4dxP8W7hoAjAQAIJQAAoQRgDvW/Xam/QuANAZhG5QlbeW3AewQAIJQAzKTmRrvmqoCrBGAy1aZttfUAt/MyuPkcZu7wX%2BMy%2BmF2TgCzGjt/TX9owAlgYscpvNtpwNyHTgSgA3MZWMBXQAChBAAglAAAhBKAK3778sfoJQALeX4vEwCAUAIAEEoAAEIJAEAoAbjOvyPBjDy5VwkAQCgBAAglADdxloS5eGZvIQAAoQQAIJQA3MqJEmbhab2RAACEEoA72FZAfZ7T2wkAQCgBuI/NBVTmCb2LAACEEoC72WJATZ7NewnAEu4zqMZTuYAALORugzo8j8sIAEAoAVjOpgMq8CQuJgCruPNgLM/gGgKwlvsPRvH0rSQAG3AXwv48d%2BsJwDbci7AnT9wmBGAz7kjYh2dtKwKwJfclPJqnbEMCsDF3JzyO52tbv/z61%2B%2Bj19DTP398Gb0E6MPofwQngEdxv8JWPE0PIgAP5K6F9TxHj%2BMroD34OggWMPofTQD2IwNwI6N/HwKwNxmAC4z%2BPQnAMEoAR%2Bb%2BEAIwnhIQy9wfSwDK0QMaM/FLEQCAUH4PACCUAACEEgCAUAIAEEoAAEIJAEAoAQAIJQAAoQQAIJQAAIQSAIBQAgAQSgAAQgkAQCgBAAglAAChBAAglAAAhBIAgFACABBKAABCCQBAKAEACCUAAKEEACCUAACEEgCAUAIAEEoAAEIJAEAoAQAIJQAAoQQAIJQAAIQSAIBQAgAQSgAAQgkAQCgBAAglAAChBAAglAAAhBIAgFACABBKAABCCQBAKAEACCUAAKEEACCUAACEEgCAUAIAEEoAAEIJAEAoAQAIJQAAoQQAIJQAAIQSAIBQAgAQSgAAQgkAQCgBAAglAAChBAAglAAAhBIAgFACABBKAABCCQBAKAEACCUAAKEEACCUAACEEgCAUAIAEEoAAEIJAEAoAQAIJQAAoQQAIJQAAIQSAIBQAgAQSgAAQgkAQCgBAAglAAChBAAglAAAhBIAgFACABBKAABCCQBAqP8DuARzjNuwo6QAAAAASUVORK5CYII%3D%22%2C%20%22sizes%22%3A%20%22512x512%22%2C%20%22type%22%3A%20%22image/png%22%2C%20%22purpose%22%3A%20%22any%20maskable%22%7D%5D%7D">
+
+<title>المراجعة الثانية — عبدالعزيز دخيل الشعلان</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef1ee; --surface:#ffffff; --line:#dfe4e0; --ink:#17211d; --muted:#63706a;
+  --brand:#22B24C; --brand-d:#16A34A;
+  --red:#b91c1c; --red-soft:#fbe6e6; --amber:#b45309;
+  --green:#15803d; --green-soft:#e4f4e8;
+  --shadow:0 1px 2px rgba(20,40,35,.06),0 6px 20px rgba(20,40,35,.07);
+  --safe-r:env(safe-area-inset-right,0px); --safe-l:env(safe-area-inset-left,0px);
+  --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Tajawal',system-ui,'Segoe UI',sans-serif;line-height:1.55;font-size:16px}
+.wrap{max-width:900px;margin:0 auto;padding:14px calc(12px + var(--safe-r)) calc(90px + var(--safe-b)) calc(12px + var(--safe-l))}
+
+header.app{background:linear-gradient(135deg,var(--brand) 0%,var(--brand-d) 100%);color:#fff;border-radius:18px;padding:18px 18px calc(18px + var(--safe-t));box-shadow:var(--shadow);position:relative;overflow:hidden;margin-top:var(--safe-t)}
+header.app::after{content:"";position:absolute;left:-40px;top:-40px;width:170px;height:170px;background:rgba(255,255,255,.09);border-radius:50%}
+.rev{display:flex;align-items:center;gap:9px;position:relative;z-index:1}
+.rev .dot{width:15px;height:15px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.25)}
+.rev .who{font-weight:800;font-size:15px}
+header.app h1{margin:8px 0 0;font-size:19px;font-weight:800;letter-spacing:-.3px}
+header.app p{margin:5px 0 0;opacity:.92;font-size:12.5px}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:14px;position:relative;z-index:1}
+.metric{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:10px 8px;text-align:center}
+.metric b{display:block;font-size:23px;font-weight:800;line-height:1.1}
+.metric span{font-size:11px;opacity:.92}
+.progress{margin-top:13px;position:relative;z-index:1}
+.progress .bar{height:10px;background:rgba(255,255,255,.24);border-radius:999px;overflow:hidden}
+.progress .fill{height:100%;background:#fff;border-radius:999px;transition:width .4s ease}
+.progress .lbl{font-size:12px;opacity:.94;margin-top:6px}
+
+.syncbar{display:flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-top:12px;box-shadow:var(--shadow);font-size:14px;cursor:pointer;min-height:46px}
+.syncbar:active{background:#f4f6f4}
+.syncbar .dotst{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.st-ok{background:var(--green)} .st-off{background:var(--amber)} .st-err{background:var(--red)}
+.syncbar .msg{font-weight:700}
+.syncbar .pending{color:var(--muted)}
+.syncbar .spacer{flex:1}
+
+.controls{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px;margin-top:12px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.controls .grp{display:flex;flex-direction:column;gap:3px;min-width:0}
+.controls .grp.wide{grid-column:1 / -1}
+.controls label{font-size:11px;color:var(--muted);font-weight:700;padding-inline-start:2px}
+.controls select,.controls input[type=search]{font-family:inherit;font-size:16px;border:1px solid var(--line);background:#fafbfa;border-radius:11px;padding:11px 12px;color:var(--ink);width:100%;min-height:46px}
+.exportrow{display:flex;gap:9px;grid-column:1 / -1}
+.exportrow .btn{flex:1}
+.btn{font-family:inherit;font-weight:700;font-size:15px;border:1px solid var(--line);background:#fafbfa;color:var(--ink);border-radius:12px;padding:12px 14px;cursor:pointer;transition:.12s;min-height:46px}
+.btn:active{transform:scale(.97);background:#eceeec}
+.btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+.btn.primary:active{background:var(--brand-d)}
+
+.roomlist{display:grid;gap:11px;margin-top:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+.card .top{display:flex;align-items:center;gap:11px;padding:14px;cursor:pointer;min-height:60px}
+.card .top:active{background:#f6f7f6}
+.chip-code{background:var(--ink);color:#fff;font-weight:800;font-size:13px;padding:7px 10px;border-radius:9px;letter-spacing:.5px;white-space:nowrap;flex-shrink:0}
+.card .meta{flex:1;min-width:0}
+.card .meta .line1{font-weight:700;font-size:14.5px}
+.card .meta .line2{font-size:11.5px;color:var(--muted);margin-top:2px}
+.state{font-size:11.5px;font-weight:800;padding:6px 10px;border-radius:999px;white-space:nowrap;flex-shrink:0}
+.state.ready{background:var(--green-soft);color:var(--green)}
+.state.notready{background:var(--red-soft);color:var(--red)}
+.state.partial{background:#fdf0dd;color:#b45309}
+.mini.info{background:#eef1ee;color:#63706a}
+.tasksec.maint-info{background:#fbf8f2;border-color:#ecdfc9}
+.mchips{display:flex;flex-wrap:wrap;gap:7px}
+.mchip{font-size:13px;font-weight:600;background:#fff;border:1px solid #ecdfc9;color:#8a6d3b;border-radius:999px;padding:8px 12px}
+.maint-note{font-size:11.5px;color:#8a6d3b;margin-top:9px;line-height:1.5}
+.caret{color:var(--muted);font-size:12px;transition:.2s;flex-shrink:0}
+.card.open .caret{transform:rotate(180deg)}
+.card .synced{font-size:15px;color:var(--green);flex-shrink:0}
+
+.detail{display:none;border-top:1px solid var(--line);padding:14px;background:#fbfcfb}
+.card.open .detail{display:block}
+.reasonbox{font-size:12.5px;color:var(--muted);margin-bottom:13px}
+.reasonbox b{color:var(--ink)}
+.hint{font-size:12px;color:var(--muted);margin:0 0 12px;background:#fff;border:1px dashed var(--line);border-radius:10px;padding:9px 11px}
+.tasksec{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:13px}
+.tasksec .sechead{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.tasksec .sechead h4{margin:0;font-size:13px;font-weight:800;color:var(--muted)}
+.mini{font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px;background:var(--red-soft);color:var(--red)}
+.mini.all{background:var(--green-soft);color:var(--green)}
+.taskgrid{display:grid;grid-template-columns:1fr;gap:8px}
+.task{display:flex;align-items:center;gap:11px;border:1.5px solid var(--line);border-radius:11px;padding:13px 12px;cursor:pointer;font-size:15.5px;font-weight:500;background:#fafbfa;transition:.12s;user-select:none;min-height:50px}
+.task:active{transform:scale(.99)}
+.task.done{background:var(--green-soft);border-color:var(--green);color:var(--green);font-weight:700}
+.task .box{width:24px;height:24px;border-radius:7px;border:2px solid #c2ccc7;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;color:#fff;background:#fff;transition:.12s}
+.task.done .box{background:var(--green);border-color:var(--green)}
+.task .ico{font-size:17px}
+.task .lbl{flex:1}
+.none-req{font-size:13px;color:#9aa5a0;padding:2px}
+
+.field{margin-bottom:12px}
+.field label{display:block;font-size:12px;color:var(--muted);font-weight:700;margin-bottom:5px}
+.field textarea,.field input{width:100%;font-family:inherit;font-size:16px;border:1px solid var(--line);border-radius:11px;padding:12px;background:#fff;color:var(--ink);resize:vertical}
+.field textarea{min-height:60px}
+.saverow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.saverow .btn.primary{flex:1;min-width:160px}
+.saved-tag{font-size:12px;color:var(--green);font-weight:700}
+.empty-list{text-align:center;padding:44px 20px;color:var(--muted)}
+footer{margin-top:22px;text-align:center;color:var(--muted);font-size:12px}
+.toast{position:fixed;bottom:calc(18px + var(--safe-b));left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:13px 22px;border-radius:13px;font-weight:700;font-size:15px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.25s;z-index:50;max-width:88vw;text-align:center}
+.toast.show{opacity:1}
+
+@media(min-width:641px){
+  .metrics{gap:12px} .metric b{font-size:26px}
+  .controls{grid-template-columns:repeat(3,1fr)}
+  .taskgrid{grid-template-columns:repeat(2,1fr)}
+  .card .top{min-height:auto}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="app">
+    <div class="rev"><span class="dot"></span><span class="who">عبدالعزيز دخيل الشعلان</span></div>
+    <h1>المراجعة الثانية للغرف</h1>
+    <p>السكن الطلابي · المبنى ١ و ٣ · الغرف المُسندة إليك</p>
+    <div class="metrics">
+      <div class="metric"><b id="m-total">0</b><span>مُسندة</span></div>
+      <div class="metric"><b id="m-complete">0</b><span>مكتملة</span></div>
+      <div class="metric"><b id="m-incomplete">0</b><span>غير مكتملة</span></div>
+      <div class="metric"><b id="m-partial">0</b><span>جزئيًا</span></div>
+    </div>
+    <div class="progress">
+      <div class="bar"><div class="fill" id="p-fill" style="width:0%"></div></div>
+      <div class="lbl" id="p-lbl">0% مكتمل</div>
+    </div>
+  </header>
+
+  <div class="syncbar" id="syncbar" onclick="manualSync()" title="اضغط للمزامنة">
+    <span class="dotst st-err" id="sync-dot"></span>
+    <span class="msg" id="sync-msg">غير متزامن</span>
+  </div>
+
+  <div class="controls">
+    <div class="grp"><label>المبنى</label><select id="f-building"><option value="">الكل</option></select></div>
+    <div class="grp"><label>الدور</label><select id="f-floor"><option value="">الكل</option></select></div>
+    <div class="grp"><label>الحالة</label><select id="f-state"><option value="">الكل</option><option value="incomplete">غير مكتملة</option><option value="partial">جزئيًا</option><option value="complete">مكتملة</option></select></div>
+    <div class="grp"><label>نوع المفروشات</label><select id="f-furn"><option value="">الكل</option></select></div>
+    <div class="grp wide"><label>بحث</label><input type="search" id="f-search" placeholder="رقم الغرفة أو النوع..."></div>
+  </div>
+
+  <div class="roomlist" id="list"></div>
+  <footer>الحالة تُحسب تلقائيًا: إذا تم إنجاز كل البنود ⇦ مكتملة · عبدالعزيز دخيل الشعلان</footer>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ====== اربط أداتك بجوجل شيت: الصق رابط الـ Web app هنا ======
+const SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbwQO3AwhiAAvdl734A6QZdDDsXlu4Xs4SLj16ZKg-T7OryL7uT-zhbKhWjFVU1LeYvW/exec";  // مثال: https://script.google.com/macros/s/XXXX/exec
+// ============================================================
+
+const REVIEWER = "عبدالعزيز دخيل الشعلان";
+const SEED = [{"id": "3-2-3-10", "building": 3, "floor": 2, "section": 3, "roomno": "10", "code": "2-3-10", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["كومودينة", "كرسي"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "3-2-4-08", "building": 3, "floor": 2, "section": 4, "roomno": "08", "code": "2-4-08", "type": "سكنية", "reason": "صيانة، مفروشات", "maintItems": [], "furnItems": ["سرير", "كرسي", "مكتب"], "enteredBy": "محمد عبدالله العبدلي"}, {"id": "3-2-4-10", "building": 3, "floor": 2, "section": 4, "roomno": "10", "code": "2-4-10", "type": "سكنية", "reason": "مفروشات", "maintItems": ["سباكة مطبخ", "سباكة دورة مياة"], "furnItems": ["دولاب", "سرير", "كرسي"], "enteredBy": "محمد عبدالله العبدلي"}, {"id": "3-3-1-01", "building": 3, "floor": 3, "section": 1, "roomno": "01", "code": "3-1-01", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["سرير", "كومودينة", "كرسي"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "3-3-1-02", "building": 3, "floor": 3, "section": 1, "roomno": "02", "code": "3-1-02", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["سرير", "كومودينة", "كرسي"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "3-3-1-04", "building": 3, "floor": 3, "section": 1, "roomno": "04", "code": "3-1-04", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["كومودينة"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "3-3-1-05", "building": 3, "floor": 3, "section": 1, "roomno": "05", "code": "3-1-05", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["كومودينة"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "3-3-1-06", "building": 3, "floor": 3, "section": 1, "roomno": "06", "code": "3-1-06", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["كومودينة", "سرير"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "3-3-1-07", "building": 3, "floor": 3, "section": 1, "roomno": "07", "code": "3-1-07", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["كومودينة", "سرير"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "3-3-1-08", "building": 3, "floor": 3, "section": 1, "roomno": "08", "code": "3-1-08", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["سرير", "كومودينة", "مكتب"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "3-3-1-09", "building": 3, "floor": 3, "section": 1, "roomno": "09", "code": "3-1-09", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["كومودينة", "كرسي"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "3-3-1-10", "building": 3, "floor": 3, "section": 1, "roomno": "10", "code": "3-1-10", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["كومودينة"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "3-3-2-01", "building": 3, "floor": 3, "section": 2, "roomno": "01", "code": "3-2-01", "type": "سكنية", "reason": "صيانة، مفروشات", "maintItems": ["سباكة مطبخ"], "furnItems": ["سرير", "كومودينة"], "enteredBy": "عبدالعزيز دخيل الشعلان"}, {"id": "3-3-2-02", "building": 3, "floor": 3, "section": 2, "roomno": "02", "code": "3-2-02", "type": "سكنية", "reason": "صيانة، مفروشات", "maintItems": ["سباكة مطبخ"], "furnItems": ["كومودينة", "سرير", "مكتب", "كرسي"], "enteredBy": "عبدالعزيز دخيل الشعلان"}, {"id": "3-3-3-01", "building": 3, "floor": 3, "section": 3, "roomno": "01", "code": "3-3-01", "type": "سكنية", "reason": "صيانة، مفروشات", "maintItems": ["سباكة مطبخ"], "furnItems": ["كرسي"], "enteredBy": "محمد عبدالله العبدلي"}, {"id": "3-3-4-10", "building": 3, "floor": 3, "section": 4, "roomno": "10", "code": "3-4-10", "type": "سكنية", "reason": "صيانة، مفروشات", "maintItems": ["سباكة مطبخ"], "furnItems": ["سرير", "كرسي", "مكتب", "كومودينة"], "enteredBy": "محمد عبدالله العبدلي"}, {"id": "3-4-2-03", "building": 3, "floor": 4, "section": 2, "roomno": "03", "code": "4-2-03", "type": "سكنية", "reason": "صيانة", "maintItems": ["سباكة مطبخ"], "furnItems": ["كرسي"], "enteredBy": "نواف سعيد الحارثي "}, {"id": "3-4-2-05", "building": 3, "floor": 4, "section": 2, "roomno": "05", "code": "4-2-05", "type": "سكنية", "reason": "صيانة، مفروشات", "maintItems": ["سباكة مطبخ"], "furnItems": ["دولاب", "سرير", "كومودينة", "مكتب", "ستارة", "كرسي"], "enteredBy": "عبدالعزيز دخيل الشعلان"}, {"id": "3-4-2-06", "building": 3, "floor": 4, "section": 2, "roomno": "06", "code": "4-2-06", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["سرير", "كرسي", "كومودينة"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "3-4-2-07", "building": 3, "floor": 4, "section": 2, "roomno": "07", "code": "4-2-07", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["كومودينة"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "3-4-2-08", "building": 3, "floor": 4, "section": 2, "roomno": "08", "code": "4-2-08", "type": "سكنية", "reason": "صيانة، مفروشات", "maintItems": ["سباكة مطبخ"], "furnItems": ["دولاب", "ستارة"], "enteredBy": "عبدالعزيز دخيل الشعلان"}];
+const LS_KEY = "housing_recheck_" + "عبدالعزيز_الشعلان";
+const OUTBOX_KEY = LS_KEY + "_outbox";
+
+let saved={}, outbox=[];
+try{ saved=JSON.parse(localStorage.getItem(LS_KEY))||{}; }catch(e){ saved={}; }
+try{ outbox=JSON.parse(localStorage.getItem(OUTBOX_KEY))||[]; }catch(e){ outbox=[]; }
+
+const MAINT_ICON={'سباكة مطبخ':'🚰','سباكة دورة مياة':'🚿','اصلاح تكييف':'❄️','اصلاح باب':'🚪','كهرباء':'💡','نجارة':'🪚','حدادة':'🔧','مقفلة':'🔒'};
+const FURN_ICON={'مكتب':'🗄️','كرسي':'🪑','كومودينة':'🛋️','سرير':'🛏️','دولاب':'🚪','ستارة':'🪟'};
+const AR={0:'٠',1:'١',2:'٢',3:'٣',4:'٤',5:'٥',6:'٦',7:'٧',8:'٨',9:'٩'};
+const arNum=n=>String(n).replace(/[0-9]/g,d=>AR[d]||d);
+
+function persist(){ localStorage.setItem(LS_KEY,JSON.stringify(saved)); }
+function persistOutbox(){ localStorage.setItem(OUTBOX_KEY,JSON.stringify(outbox)); }
+function rec(id){ return saved[id]||null; }
+function toast(m){ const t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),1700); }
+
+// ---- derived status ----
+function furnTotal(r){ return r.furnItems?r.furnItems.length:0; }
+function furnDoneCount(r){ const rc=rec(r.id)||{}; let d=0; (r.furnItems||[]).forEach(it=>{ if(rc.furn&&rc.furn[it]) d++; }); return d; }
+function furnitureDone(r){ const t=furnTotal(r); return t===0 || furnDoneCount(r)===t; }
+function needsMaintenance(r){ return !!(r.maintItems && r.maintItems.length); }
+function statusOf(r){ if(!furnitureDone(r)) return 'incomplete'; if(needsMaintenance(r)) return 'partial'; return 'complete'; }
+
+// ---- filters ----
+(function(){
+  const put=(sel,vals,fmt)=>{ const el=document.getElementById(sel); vals.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=fmt?fmt(v):v;el.appendChild(o);}); };
+  put('f-building',[...new Set(SEED.map(r=>r.building))].sort((a,b)=>a-b),v=>'مبنى '+arNum(v));
+  put('f-floor',[...new Set(SEED.map(r=>r.floor))].sort((a,b)=>a-b),v=>'الدور '+arNum(v));
+  put('f-furn',[...new Set(SEED.flatMap(r=>r.furnItems))].sort());
+})();
+function filtered(){
+  const g=id=>document.getElementById(id).value;
+  const b=g('f-building'),fl=g('f-floor'),st=g('f-state'),mt=g('f-furn'),q=g('f-search').trim();
+  return SEED.filter(r=>{
+    if(b&&String(r.building)!==b)return false;
+    if(fl&&String(r.floor)!==fl)return false;
+    if(mt&&!r.furnItems.includes(mt))return false;
+    if(q&&!(r.code.includes(q)||r.type.includes(q)))return false;
+    if(st && statusOf(r)!==st) return false;
+    return true;
+  });
+}
+function stateBadge(r){ const s=statusOf(r),t=furnTotal(r),d=furnDoneCount(r);
+  if(s==='complete') return '<span class="state ready">مكتملة</span>';
+  if(s==='partial') return '<span class="state partial">مكتملة جزئيًا</span>';
+  return `<span class="state notready">غير مكتملة · ${arNum(d)}/${arNum(t)}</span>`; }
+
+function taskSection(title,items,icons,kind,rc,id){
+  if(!items.length) return `<div class="tasksec"><div class="sechead"><h4>${title}</h4></div><div class="none-req">لا يوجد بند مطلوب.</div></div>`;
+  const store=rc[kind]||{}, done=items.filter(it=>store[it]).length, all=done===items.length;
+  const cells=items.map(it=>{const on=!!store[it];
+    return `<div class="task ${on?'done':''}" onclick="toggleTask('${id}','${kind}','${it.replace(/'/g,"\\'")}')"><span class="box">${on?'✓':''}</span><span class="ico">${icons[it]||'•'}</span><span class="lbl">${it}</span></div>`;}).join('');
+  return `<div class="tasksec"><div class="sechead"><h4>${title}</h4><span class="mini ${all?'all':''}">${arNum(done)}/${arNum(items.length)}</span></div><div class="taskgrid">${cells}</div></div>`;
+}
+function furnSection(r,rc){
+  const items=r.furnItems||[];
+  if(!items.length) return `<div class="tasksec"><div class="sechead"><h4>بنود المفروشات</h4></div><div class="none-req">لا يوجد بند مفروشات لهذه الغرفة.</div></div>`;
+  const store=rc.furn||{}, done=items.filter(it=>store[it]).length, all=done===items.length;
+  const cells=items.map(it=>{const on=!!store[it];
+    return `<div class="task ${on?'done':''}" onclick="toggleFurn('${r.id}','${it.replace(/'/g,"\\'")}')"><span class="box">${on?'✓':''}</span><span class="ico">${FURN_ICON[it]||'•'}</span><span class="lbl">${it}</span></div>`;}).join('');
+  return `<div class="tasksec"><div class="sechead"><h4>بنود المفروشات</h4><span class="mini ${all?'all':''}">${arNum(done)}/${arNum(items.length)}</span></div><div class="taskgrid">${cells}</div></div>`;
+}
+function maintInfo(r){
+  const items=r.maintItems||[];
+  if(!items.length) return '';
+  const chips=items.map(it=>`<span class="mchip">${MAINT_ICON[it]||'•'} ${it}</span>`).join('');
+  return `<div class="tasksec maint-info"><div class="sechead"><h4>صيانة مطلوبة</h4><span class="mini info">خارج مهمة اليوم</span></div><div class="mchips">${chips}</div><div class="maint-note">تُعالَج ضمن أعمال الصيانة لاحقًا — تبقى الغرفة «مكتملة جزئيًا» حتى تُنجز.</div></div>`;
+}
+function cardHTML(r){
+  const rc=rec(r.id)||{}, open=rc._open?'open':'';
+  return `<div class="card ${open}" data-id="${r.id}">
+    <div class="top" onclick="toggleCard('${r.id}')">
+      <span class="chip-code">${r.code}</span>
+      <div class="meta"><div class="line1">${r.type} · مبنى ${arNum(r.building)} · الدور ${arNum(r.floor)}</div>
+      <div class="line2">القسم ${r.section?arNum(r.section):'—'}</div></div>
+      ${rc.synced?'<span class="synced">✓</span>':''}
+      ${stateBadge(r)}<span class="caret">▾</span>
+    </div>
+    <div class="detail">
+      <div class="reasonbox">سبب عدم الاكتمال: <b>${r.reason||'—'}</b></div>
+      <p class="hint">أشّر المفروشات المنجزة. إذا اكتملت المفروشات وبقيت صيانة مطلوبة تُعتبر الغرفة «مكتملة جزئيًا».</p>
+      ${furnSection(r,rc)}
+      ${maintInfo(r)}
+      <div class="field"><label>ملاحظات (اختياري)</label><textarea onchange="setField('${r.id}','notes',this.value)" placeholder="ما المتبقي أو أي ملاحظة...">${rc.notes||''}</textarea></div>
+      <div class="field"><label>اسم المراجِع</label><input type="text" onchange="setField('${r.id}','checker',this.value)" value="${rc.checker||REVIEWER}"></div>
+      <div class="saverow"><button class="btn primary" onclick="saveRoom('${r.id}')">حفظ</button>
+        ${rc.savedAt?`<span class="saved-tag">✓ ${new Date(rc.savedAt).toLocaleString('ar-SA')}</span>`:''}
+      </div>
+    </div></div>`;
+}
+function render(){
+  const rows=filtered();
+  document.getElementById('list').innerHTML=rows.length?rows.map(cardHTML).join(''):'<div class="empty-list">لا توجد غرف مطابقة للتصفية.</div>';
+  updateMetrics();
+}
+function updateMetrics(){
+  const total=SEED.length; let comp=0,part=0,inc=0;
+  SEED.forEach(r=>{ const s=statusOf(r); if(s==='complete')comp++; else if(s==='partial')part++; else inc++; });
+  document.getElementById('m-total').textContent=arNum(total);
+  document.getElementById('m-complete').textContent=arNum(comp);
+  document.getElementById('m-partial').textContent=arNum(part);
+  document.getElementById('m-incomplete').textContent=arNum(inc);
+  const furnDoneRooms=comp+part;
+  const pct=total?Math.round(furnDoneRooms/total*100):0;
+  document.getElementById('p-fill').style.width=pct+'%';
+  document.getElementById('p-lbl').textContent=arNum(pct)+'% من غرفك تم إنجاز مفروشاتها ('+arNum(furnDoneRooms)+' من '+arNum(total)+')';
+}
+function toggleCard(id){const r=saved[id]||(saved[id]={});r._open=!r._open;persist();render();}
+function markChanged(r){ r.synced=false; }
+function toggleTask(id,kind,item){const r=saved[id]||(saved[id]={});r._open=true;const s=r[kind]||(r[kind]={});s[item]=!s[item];markChanged(r);persist();render();enqueue(id);scheduleFlush();}
+function toggleFurn(id,item){const r=saved[id]||(saved[id]={});r._open=true;const s=r.furn||(r.furn={});s[item]=!s[item];markChanged(r);persist();render();enqueue(id);scheduleFlush();}
+function setField(id,key,val){const r=saved[id]||(saved[id]={});r[key]=val;markChanged(r);persist();enqueue(id);scheduleFlush();}
+
+function roomById(id){return SEED.find(x=>x.id===id);}
+function payload(id){
+  const r=roomById(id), rc=rec(id)||{};
+  const md=(r.maintItems||[]).filter(it=>rc.maint&&rc.maint[it]);
+  const fd=(r.furnItems||[]).filter(it=>rc.furn&&rc.furn[it]);
+  return {reviewer:REVIEWER, room_id:id, building:r.building, floor:r.floor, section:r.section, room_code:r.code, type:r.type,
+    recheck_result: statusOf(r)==='complete'?'مكتملة':(statusOf(r)==='partial'?'مكتملة جزئيًا':'غير مكتملة'),
+    maintenance_required:(r.maintItems||[]).join('، '), maintenance_done:md.join('، '),
+    maintenance_pending:(r.maintItems||[]).filter(x=>!md.includes(x)).join('، '),
+    furniture_required:(r.furnItems||[]).join('، '), furniture_done:fd.join('، '),
+    furniture_pending:(r.furnItems||[]).filter(x=>!fd.includes(x)).join('، '),
+    notes:rc.notes||'', checker:rc.checker||REVIEWER};
+}
+function saveRoom(id){ const r=saved[id]||(saved[id]={}); r.savedAt=Date.now(); markChanged(r); persist(); enqueue(id); render(); flush(); const _s=statusOf(roomById(id)); toast('تم الحفظ — '+(_s==='complete'?'مكتملة':_s==='partial'?'مكتملة جزئيًا':'غير مكتملة')); }
+function enqueue(id){ if(!outbox.includes(id)) outbox.push(id); persistOutbox(); updateSyncUI(); }
+
+let flushTimer=null;
+function scheduleFlush(){ if(!SHEET_ENDPOINT)return; clearTimeout(flushTimer); flushTimer=setTimeout(flush,2500); }
+function updateSyncUI(){
+  const dot=document.getElementById('sync-dot'),msg=document.getElementById('sync-msg');
+  const synced = SHEET_ENDPOINT && outbox.length===0;
+  dot.className='dotst '+(synced?'st-ok':'st-err');
+  msg.textContent = synced ? 'متزامن' : 'غير متزامن';
+}
+function manualSync(){ if(!SHEET_ENDPOINT) return; if(outbox.length){ flush(); toast('جارٍ المزامنة'); } }
+async function flush(){
+  if(!SHEET_ENDPOINT||!outbox.length){updateSyncUI();return;}
+  const batch=outbox.slice(), rows=batch.map(payload);
+  try{
+    await fetch(SHEET_ENDPOINT,{method:'POST',mode:'no-cors',body:JSON.stringify(rows)});
+    batch.forEach(id=>{const r=saved[id];if(r)r.synced=true;});
+    outbox=outbox.filter(id=>!batch.includes(id));
+    persist();persistOutbox();updateSyncUI();render();
+  }catch(e){ updateSyncUI(); }
+}
+
+
+['f-building','f-floor','f-state','f-furn'].forEach(id=>document.getElementById(id).onchange=render);
+document.getElementById('f-search').oninput=render;
+window.addEventListener('online',flush);
+updateSyncUI(); render(); flush();
+</script>
+</body>
+</html>

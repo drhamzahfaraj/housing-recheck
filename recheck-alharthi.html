@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#BE185D">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="مراجعة الحارثي">
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%20%22%D8%A7%D9%84%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D8%A7%D9%84%D8%AB%D8%A7%D9%86%D9%8A%D8%A9%20%E2%80%94%20%D9%86%D9%88%D8%A7%D9%81%20%D8%B3%D8%B9%D9%8A%D8%AF%20%D8%A7%D9%84%D8%AD%D8%A7%D8%B1%D8%AB%D9%8A%22%2C%20%22short_name%22%3A%20%22%D9%85%D8%B1%D8%A7%D8%AC%D8%B9%D8%A9%20%D8%A7%D9%84%D8%AD%D8%A7%D8%B1%D8%AB%D9%8A%22%2C%20%22display%22%3A%20%22standalone%22%2C%20%22orientation%22%3A%20%22portrait%22%2C%20%22background_color%22%3A%20%22%23eef1ee%22%2C%20%22theme_color%22%3A%20%22%23BE185D%22%2C%20%22icons%22%3A%20%5B%7B%22src%22%3A%20%22data%3Aimage/png%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAIAAAB7GkOtAAAOAklEQVR4nO3cTW4bRxeGUeWD16CJHdgr0b6SSaBJFpaV2HA8ySq%2BAQHGESn%2BdDe7bt33nJFhQGAB3X2fKtrqX75/%2Bu0JgDz/G70AAMYQAIBQAgAQSgAAQgkAQCgBAAglAAChBAAglAAAhBIAgFACABBKAABCCQBAKAEACCUAAKEEACCUAACEEgCAUAIAEEoAAEIJAEAoAQAIJQAAoQQAIJQAAIQSAIBQAgAQSgAAQgkAQCgBAAglAAChBAAglAAAhBIAgFACABBKAABCCQBAKAEACCUAAKEEACCUAACEEgCAUAIAEEoAAEIJAEAoAQAIJQAAoQQAIJQAAIQSAIBQAgAQSgAAQgkAQCgBAAglAAChBAAglAAAhBIAgFACABBKAABCCQBAKAEACCUAAKEEACCUAACEEgCAUAIAEEoAAEIJAEAoAQAIJQAAoQQAIJQAAIQSAIBQAgAQSgAAQgkAQCgBAAglAAChBAAglAAAhBIAgFACABBKAABCCQBAKAEACCUAAKEEACCUAACEEgCAUAIAEEoAAEIJAEAoAQAIJQAAoT6MXgBvffr%2B5%2BglwKP8/evvo5fAv375/um30WtIZ%2BITSw/GEoBhzH04UoIhBGBv5j5coAR7EoD9GP1wIxnYhwDsweiHBWTg0QTgsYx%2BWEkGHsfvATyQ6Q/reY4eRwAexV0LW/E0PYivgLbnZoUH8XXQtpwANmb6w%2BN4vrYlAFtyd8Kjeco2JACbcV/CPjxrWxGAbbgjYU%2BeuE0IwAbci7A/z916ArCWuxBG8fStJACruP9gLM/gGgKwnDsPKvAkLiYAAKEEYCGbDqjD87iMACzhboNqPJULCMDd3GdQk2fzXgIAEEoA7mOLAZV5Qu8iAAChBOAONhdQn%2Bf0dgIAEEoAbmVbAbPwtN5IAABCCQBAKAG4iRMlzMUzewsBAAglAAChBOA6Z0mYkSf3KgEACCUAAKEEACCUAACEEoAr/DsSzMvze5kAAIQSAIBQAgAQSgAAQgkAQCgBAAglAAChPoxeABt4fn3Z54P%2B%2BeOvfT4I2IEATGy3uX/6iUoADfgKaFb7T/86nw5swglgPkWG72EZjgIwLyeAyRSZ/kfV1gPcTgBmUnPa1lwVcJUAAIQSgGlU3mhXXhvwHgGYQ/0JW3%2BFwBsCABBKAABCCcAEZvl2ZZZ1AgcCABBKAABCCQDXed8DtCQAXHGY/hoA/XgZHJf8PPcPfx71L71ff3wb8rk8PT19%2Bfh59BJ4CCcA7rP/UeDrj2%2Bm/1guQVdOALzrvVm/21HA0CnlcDmcBjpxAuC8yzt90z%2BW69KJAHCG6c8Frk4bAkA55kt9rlEPAsBbw7f/wD4EgP8YPv1tLWfhSjUgAPxr%2BPQH9iQA3Uz9K7s2lXNxvWYnAK2seW2D7T%2BkEYA%2BTl/bsOxnT5n%2B0JIANHE6wW9vgOkPmQSgg8vvbFj2s0B7AjC9yxN85Xy3/YfGBGBuK/f4vvyBZAIwtxtn9NlBX3D6e9PkXFyv2QnA9JY1oOD0B3YmAB2sOQdUY1M5C1eqAQFo4q4G2P4DTwLQySbngArT39ayPteoBwFoZeX4rjD9D8yXylydNgSgmzpDfCVTpibXpRMBaGhZAwqW48vHz8ZNHS5HPwLQ073TvOD0PzJ3hnMJuvowegE8yvPry43/77Py9D8ygGBzTgCdTTHZgVEEoLnTBjy/vvz8lyIBsQSgv7Pj/vAH0x%2BSCUCEs%2BPe9IdwAjCBTd7hs8O4n%2BJdQ8CRAACEEgCAUAIwh/rfrtRfIfCGAEyj8oStvDbgPQIAEEoAZlJzo11zVcBVAjCZatO22nqA23kZ3HwOM3f4r3EZ/TA7J4BZjZ2/pj804AQwseMU3u00YO5DJwLQgbkMLOArIIBQAgAQSgAAQgkAQCgBAAglAAChBAAglAAAhBIAgFACABBKAABCCQBAKAEACCUAAKEEACCUAACEEgCAUAIAEEoAAEIJAEAoAQAIJQAAoQQAIJQAAIQSAIBQAgAQSgAAQgkAQCgBAAglAAChPoxeABt4fn3Z54P%2B%2BeOvfT4I2IEATGy3uX/6iUoADfgKaFb7T/86nw5swglgPkWG72EZjgIwLyeAyRSZ/kfV1gPcTgBmUnPa1lwVcJUAAIQSgGlU3mhXXhvwHgGYQ/0JW3%2BFwBsCABBKAABCCcAEZvl2ZZZ1AgcCABBKAABCCQDXed8DtCQAXHGY/hoA/XgZHJf8PPcPfx71L71ff3wb8rk8PT19%2Bfh59BJ4CCcA7rP/UeDrj2%2Bm/1guQVdOALzrvVm/21HA0CnlcDmcBjpxAuC8yzt90z%2BW69KJAHCG6c8Frk4bAkA55kt9rlEPAsBbw7f/wD4EgP8YPv1tLWfhSjUgAPxr%2BPQH9iQA3Uz9K7s2lXNxvWYnAK2seW2D7T%2BkEYA%2BTl/bsOxnT5n%2B0JIANHE6wW9vgOkPmQSgg8vvbFj2s0B7AjC9yxN85Xy3/YfGBGBuK/f4vvyBZAIwtxtn9NlBX3D6e9PkXFyv2QnA9JY1oOD0B3YmAB2sOQdUY1M5C1eqAQFo4q4G2P4DTwLQySbngArT39ayPteoBwFoZeX4rjD9D8yXylydNgSgmzpDfCVTpibXpRMBaGhZAwqW48vHz8ZNHS5HPwLQ073TvOD0PzJ3hnMJuvowegE8yvPry43/77Py9D8ygGBzTgCdTTHZgVEEoLnTBjy/vvz8lyIBsQSgv7Pj/vAH0x%2BSCUCEs%2BPe9IdwAjCBTd7hs8O4n%2BJdQ8CRAACEEgCAUAIwh/rfrtRfIfCGAEyj8oStvDbgPQIAEEoAZlJzo11zVcBVAjCZatO22nqA23kZ3HwOM3f4r3EZ/TA7J4BZjZ2/pj804AQwseMU3u00YO5DJwLQgbkMLOArIIBQAgAQSgAAQgkAQCgBAAglAAChBAAglAAAhBIAgFACABBKAABCCQBAKAEACCUAAKEEACCUAACEEgCAUAIAEEoAAEIJAEAoAQAIJQAAoQQAIJQAAIQSAIBQAgAQSgAAQgkAQCgBAAglAAChPoxeABt4fn3Z54P%2B%2BeOvfT4I2IEATGy3uX/6iUoADfgKaFb7T/86nw5swglgPkWG72EZjgIwLyeAyRSZ/kfV1gPcTgBmUnPa1lwVcJUAAIQSgGlU3mhXXhvwHgGYQ/0JW3%2BFwBsCABBKAABCCcAEZvl2ZZZ1AgcCABBKAABCCQDXed8DtCQAXHGY/hoA/XgZHJf8PPcPfx71L71ff3wb8rk8PT19%2Bfh59BJ4CCcA7rP/UeDrj2%2Bm/1guQVdOALzrvVm/21HA0CnlcDmcBjpxAuC8yzt90z%2BW69KJAHCG6c8Frk4bAkA55kt9rlEPAsBbw7f/wD4EgP8YPv1tLWfhSjUgAPxr%2BPQH9iQA3Uz9K7s2lXNxvWYnAK2seW2D7T%2BkEYA%2BTl/bsOxnT5n%2B0JIANHE6wW9vgOkPmQSgg8vvbFj2s0B7AjC9yxN85Xy3/YfGBGBuK/f4vvyBZAIwtxtn9NlBX3D6e9PkXFyv2QnA9JY1oOD0B3YmAB2sOQdUY1M5C1eqAQFo4q4G2P4DTwLQySbngArT39ayPteoBwFoZeX4rjD9D8yXylydNgSgmzpDfCVTpibXpRMBaGhZAwqW48vHz8ZNHS5HPwLQ073TvOD0PzJ3hnMJuvowegE8yvPry43/77Py9D8ygGBzTgCdTTHZgVEEoLnTBjy/vvz8lyIBsQSgv7Pj/vAH0x%2BSCUCEs%2BPe9IdwAjCBTd7hs8O4n%2BJdQ8CRAACEEgCAUAIwh/rfrtRfIfCGAEyj8oStvDbgPQIAEEoAZlJzo11zVcBVAjCZatO22nqA23kZ3HwOM3f4r3EZ/TA7J4BZjZ2/pj804AQwseMU3u00YO5DJwLQgbkMLOArIIBQAgAQSgAAQgnAFX//%2BvvoJQALeX4vEwCAUAIAEEoAAEIJAEAoAbjOvyPBjDy5VwkAQCgBAAglADdxloS5eGZvIQAAoQQAIJQA3MqJEmbhab2RAACEEoA72FZAfZ7T2wkAQCgBuI/NBVTmCb2LAACEEoC72WJATZ7NewnAEu4zqMZTuYAALORugzo8j8sIAEAoAVjOpgMq8CQuJgCruPNgLM/gGgKwlvsPRvH0rSQAG3AXwv48d%2BsJwDbci7AnT9wmBGAz7kjYh2dtKwKwJfclPJqnbEMCsDF3JzyO52tbv3z/9NvoNfT06fufo5cAfRj9j%2BAE8CjuV9iKp%2BlBBOCB3LWwnufocXwFtAdfB8ECRv%2BjCcB%2BZABuZPTvQwD2JgNwgdG/JwEYRgngyNwfQgDGUwJimftjCUA5ekBjJn4pAgAQyu8BAIQSAIBQAgAQSgAAQgkAQCgBAAglAAChBAAglAAAhBIAgFACABBKAABCCQBAKAEACCUAAKEEACCUAACEEgCAUAIAEEoAAEIJAEAoAQAIJQAAoQQAIJQAAIQSAIBQAgAQSgAAQgkAQCgBAAglAAChBAAglAAAhBIAgFACABBKAABCCQBAKAEACCUAAKEEACCUAACEEgCAUAIAEEoAAEIJAEAoAQAIJQAAoQQAIJQAAIQSAIBQAgAQSgAAQgkAQCgBAAglAAChBAAglAAAhBIAgFACABBKAABCCQBAKAEACCUAAKEEACCUAACEEgCAUAIAEEoAAEIJAEAoAQAIJQAAoQQAIJQAAIQSAIBQAgAQSgAAQgkAQCgBAAglAAChBAAglAAAhBIAgFACABBKAABCCQBAKAEACCUAAKEEACCUAACEEgCAUAIAEEoAAEIJAEAoAQAI9X%2BKl3kMMv5l7AAAAABJRU5ErkJggg%3D%3D%22%2C%20%22sizes%22%3A%20%22512x512%22%2C%20%22type%22%3A%20%22image/png%22%2C%20%22purpose%22%3A%20%22any%20maskable%22%7D%5D%7D">
+
+<title>المراجعة الثانية — نواف سعيد الحارثي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef1ee; --surface:#ffffff; --line:#dfe4e0; --ink:#17211d; --muted:#63706a;
+  --brand:#E31C79; --brand-d:#BE185D;
+  --red:#b91c1c; --red-soft:#fbe6e6; --amber:#b45309;
+  --green:#15803d; --green-soft:#e4f4e8;
+  --shadow:0 1px 2px rgba(20,40,35,.06),0 6px 20px rgba(20,40,35,.07);
+  --safe-r:env(safe-area-inset-right,0px); --safe-l:env(safe-area-inset-left,0px);
+  --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Tajawal',system-ui,'Segoe UI',sans-serif;line-height:1.55;font-size:16px}
+.wrap{max-width:900px;margin:0 auto;padding:14px calc(12px + var(--safe-r)) calc(90px + var(--safe-b)) calc(12px + var(--safe-l))}
+
+header.app{background:linear-gradient(135deg,var(--brand) 0%,var(--brand-d) 100%);color:#fff;border-radius:18px;padding:18px 18px calc(18px + var(--safe-t));box-shadow:var(--shadow);position:relative;overflow:hidden;margin-top:var(--safe-t)}
+header.app::after{content:"";position:absolute;left:-40px;top:-40px;width:170px;height:170px;background:rgba(255,255,255,.09);border-radius:50%}
+.rev{display:flex;align-items:center;gap:9px;position:relative;z-index:1}
+.rev .dot{width:15px;height:15px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.25)}
+.rev .who{font-weight:800;font-size:15px}
+header.app h1{margin:8px 0 0;font-size:19px;font-weight:800;letter-spacing:-.3px}
+header.app p{margin:5px 0 0;opacity:.92;font-size:12.5px}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:14px;position:relative;z-index:1}
+.metric{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:10px 8px;text-align:center}
+.metric b{display:block;font-size:23px;font-weight:800;line-height:1.1}
+.metric span{font-size:11px;opacity:.92}
+.progress{margin-top:13px;position:relative;z-index:1}
+.progress .bar{height:10px;background:rgba(255,255,255,.24);border-radius:999px;overflow:hidden}
+.progress .fill{height:100%;background:#fff;border-radius:999px;transition:width .4s ease}
+.progress .lbl{font-size:12px;opacity:.94;margin-top:6px}
+
+.syncbar{display:flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-top:12px;box-shadow:var(--shadow);font-size:14px;cursor:pointer;min-height:46px}
+.syncbar:active{background:#f4f6f4}
+.syncbar .dotst{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.st-ok{background:var(--green)} .st-off{background:var(--amber)} .st-err{background:var(--red)}
+.syncbar .msg{font-weight:700}
+.syncbar .pending{color:var(--muted)}
+.syncbar .spacer{flex:1}
+
+.controls{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px;margin-top:12px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.controls .grp{display:flex;flex-direction:column;gap:3px;min-width:0}
+.controls .grp.wide{grid-column:1 / -1}
+.controls label{font-size:11px;color:var(--muted);font-weight:700;padding-inline-start:2px}
+.controls select,.controls input[type=search]{font-family:inherit;font-size:16px;border:1px solid var(--line);background:#fafbfa;border-radius:11px;padding:11px 12px;color:var(--ink);width:100%;min-height:46px}
+.exportrow{display:flex;gap:9px;grid-column:1 / -1}
+.exportrow .btn{flex:1}
+.btn{font-family:inherit;font-weight:700;font-size:15px;border:1px solid var(--line);background:#fafbfa;color:var(--ink);border-radius:12px;padding:12px 14px;cursor:pointer;transition:.12s;min-height:46px}
+.btn:active{transform:scale(.97);background:#eceeec}
+.btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+.btn.primary:active{background:var(--brand-d)}
+
+.roomlist{display:grid;gap:11px;margin-top:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+.card .top{display:flex;align-items:center;gap:11px;padding:14px;cursor:pointer;min-height:60px}
+.card .top:active{background:#f6f7f6}
+.chip-code{background:var(--ink);color:#fff;font-weight:800;font-size:13px;padding:7px 10px;border-radius:9px;letter-spacing:.5px;white-space:nowrap;flex-shrink:0}
+.card .meta{flex:1;min-width:0}
+.card .meta .line1{font-weight:700;font-size:14.5px}
+.card .meta .line2{font-size:11.5px;color:var(--muted);margin-top:2px}
+.state{font-size:11.5px;font-weight:800;padding:6px 10px;border-radius:999px;white-space:nowrap;flex-shrink:0}
+.state.ready{background:var(--green-soft);color:var(--green)}
+.state.notready{background:var(--red-soft);color:var(--red)}
+.state.partial{background:#fdf0dd;color:#b45309}
+.mini.info{background:#eef1ee;color:#63706a}
+.tasksec.maint-info{background:#fbf8f2;border-color:#ecdfc9}
+.mchips{display:flex;flex-wrap:wrap;gap:7px}
+.mchip{font-size:13px;font-weight:600;background:#fff;border:1px solid #ecdfc9;color:#8a6d3b;border-radius:999px;padding:8px 12px}
+.maint-note{font-size:11.5px;color:#8a6d3b;margin-top:9px;line-height:1.5}
+.caret{color:var(--muted);font-size:12px;transition:.2s;flex-shrink:0}
+.card.open .caret{transform:rotate(180deg)}
+.card .synced{font-size:15px;color:var(--green);flex-shrink:0}
+
+.detail{display:none;border-top:1px solid var(--line);padding:14px;background:#fbfcfb}
+.card.open .detail{display:block}
+.reasonbox{font-size:12.5px;color:var(--muted);margin-bottom:13px}
+.reasonbox b{color:var(--ink)}
+.hint{font-size:12px;color:var(--muted);margin:0 0 12px;background:#fff;border:1px dashed var(--line);border-radius:10px;padding:9px 11px}
+.tasksec{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:13px}
+.tasksec .sechead{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.tasksec .sechead h4{margin:0;font-size:13px;font-weight:800;color:var(--muted)}
+.mini{font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px;background:var(--red-soft);color:var(--red)}
+.mini.all{background:var(--green-soft);color:var(--green)}
+.taskgrid{display:grid;grid-template-columns:1fr;gap:8px}
+.task{display:flex;align-items:center;gap:11px;border:1.5px solid var(--line);border-radius:11px;padding:13px 12px;cursor:pointer;font-size:15.5px;font-weight:500;background:#fafbfa;transition:.12s;user-select:none;min-height:50px}
+.task:active{transform:scale(.99)}
+.task.done{background:var(--green-soft);border-color:var(--green);color:var(--green);font-weight:700}
+.task .box{width:24px;height:24px;border-radius:7px;border:2px solid #c2ccc7;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;color:#fff;background:#fff;transition:.12s}
+.task.done .box{background:var(--green);border-color:var(--green)}
+.task .ico{font-size:17px}
+.task .lbl{flex:1}
+.none-req{font-size:13px;color:#9aa5a0;padding:2px}
+
+.field{margin-bottom:12px}
+.field label{display:block;font-size:12px;color:var(--muted);font-weight:700;margin-bottom:5px}
+.field textarea,.field input{width:100%;font-family:inherit;font-size:16px;border:1px solid var(--line);border-radius:11px;padding:12px;background:#fff;color:var(--ink);resize:vertical}
+.field textarea{min-height:60px}
+.saverow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.saverow .btn.primary{flex:1;min-width:160px}
+.saved-tag{font-size:12px;color:var(--green);font-weight:700}
+.empty-list{text-align:center;padding:44px 20px;color:var(--muted)}
+footer{margin-top:22px;text-align:center;color:var(--muted);font-size:12px}
+.toast{position:fixed;bottom:calc(18px + var(--safe-b));left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:13px 22px;border-radius:13px;font-weight:700;font-size:15px;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.25s;z-index:50;max-width:88vw;text-align:center}
+.toast.show{opacity:1}
+
+@media(min-width:641px){
+  .metrics{gap:12px} .metric b{font-size:26px}
+  .controls{grid-template-columns:repeat(3,1fr)}
+  .taskgrid{grid-template-columns:repeat(2,1fr)}
+  .card .top{min-height:auto}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="app">
+    <div class="rev"><span class="dot"></span><span class="who">نواف سعيد الحارثي</span></div>
+    <h1>المراجعة الثانية للغرف</h1>
+    <p>السكن الطلابي · المبنى ١ و ٣ · الغرف المُسندة إليك</p>
+    <div class="metrics">
+      <div class="metric"><b id="m-total">0</b><span>مُسندة</span></div>
+      <div class="metric"><b id="m-complete">0</b><span>مكتملة</span></div>
+      <div class="metric"><b id="m-incomplete">0</b><span>غير مكتملة</span></div>
+      <div class="metric"><b id="m-partial">0</b><span>جزئيًا</span></div>
+    </div>
+    <div class="progress">
+      <div class="bar"><div class="fill" id="p-fill" style="width:0%"></div></div>
+      <div class="lbl" id="p-lbl">0% مكتمل</div>
+    </div>
+  </header>
+
+  <div class="syncbar" id="syncbar" onclick="manualSync()" title="اضغط للمزامنة">
+    <span class="dotst st-err" id="sync-dot"></span>
+    <span class="msg" id="sync-msg">غير متزامن</span>
+  </div>
+
+  <div class="controls">
+    <div class="grp"><label>المبنى</label><select id="f-building"><option value="">الكل</option></select></div>
+    <div class="grp"><label>الدور</label><select id="f-floor"><option value="">الكل</option></select></div>
+    <div class="grp"><label>الحالة</label><select id="f-state"><option value="">الكل</option><option value="incomplete">غير مكتملة</option><option value="partial">جزئيًا</option><option value="complete">مكتملة</option></select></div>
+    <div class="grp"><label>نوع المفروشات</label><select id="f-furn"><option value="">الكل</option></select></div>
+    <div class="grp wide"><label>بحث</label><input type="search" id="f-search" placeholder="رقم الغرفة أو النوع..."></div>
+  </div>
+
+  <div class="roomlist" id="list"></div>
+  <footer>الحالة تُحسب تلقائيًا: إذا تم إنجاز كل البنود ⇦ مكتملة · نواف سعيد الحارثي</footer>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ====== اربط أداتك بجوجل شيت: الصق رابط الـ Web app هنا ======
+const SHEET_ENDPOINT = "https://script.google.com/macros/s/AKfycbwQO3AwhiAAvdl734A6QZdDDsXlu4Xs4SLj16ZKg-T7OryL7uT-zhbKhWjFVU1LeYvW/exec";  // مثال: https://script.google.com/macros/s/XXXX/exec
+// ============================================================
+
+const REVIEWER = "نواف سعيد الحارثي";
+const SEED = [{"id": "1-3-3-04", "building": 1, "floor": 3, "section": 3, "roomno": "04", "code": "3-3-04", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["دولاب", "سرير", "كومودينة", "مكتب", "كرسي", "ستارة"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "1-3-3-05", "building": 1, "floor": 3, "section": 3, "roomno": "05", "code": "3-3-05", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["دولاب", "سرير", "كومودينة", "مكتب", "كرسي", "ستارة"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "1-3-3-06", "building": 1, "floor": 3, "section": 3, "roomno": "06", "code": "3-3-06", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["دولاب", "سرير", "كومودينة"], "enteredBy": "عبدالعزيز دخيل الشعلان"}, {"id": "1-3-3-09", "building": 1, "floor": 3, "section": 3, "roomno": "09", "code": "3-3-09", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["سرير", "دولاب"], "enteredBy": "عبدالعزيز دخيل الشعلان"}, {"id": "1-3-3-10", "building": 1, "floor": 3, "section": 3, "roomno": "10", "code": "3-3-10", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["دولاب", "سرير"], "enteredBy": "عبدالعزيز دخيل الشعلان"}, {"id": "1-3-4-01", "building": 1, "floor": 3, "section": 4, "roomno": "01", "code": "3-4-01", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["دولاب", "سرير", "كومودينة", "مكتب", "كرسي", "ستارة"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "1-3-4-02", "building": 1, "floor": 3, "section": 4, "roomno": "02", "code": "3-4-02", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["دولاب", "سرير", "كومودينة", "مكتب", "كرسي", "ستارة"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "1-3-4-03", "building": 1, "floor": 3, "section": 4, "roomno": "03", "code": "3-4-03", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["دولاب", "سرير", "كومودينة", "مكتب", "كرسي", "ستارة"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "1-3-4-04", "building": 1, "floor": 3, "section": 4, "roomno": "04", "code": "3-4-04", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["دولاب", "سرير", "كومودينة", "مكتب", "كرسي", "ستارة"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "1-3-4-05", "building": 1, "floor": 3, "section": 4, "roomno": "05", "code": "3-4-05", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["دولاب", "سرير", "كومودينة", "مكتب", "كرسي", "ستارة"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "1-3-4-06", "building": 1, "floor": 3, "section": 4, "roomno": "06", "code": "3-4-06", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["دولاب", "سرير", "كومودينة", "مكتب", "ستارة", "كرسي"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "1-3-4-07", "building": 1, "floor": 3, "section": 4, "roomno": "07", "code": "3-4-07", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["دولاب", "سرير", "كومودينة", "مكتب", "كرسي", "ستارة"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "1-3-4-08", "building": 1, "floor": 3, "section": 4, "roomno": "08", "code": "3-4-08", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["سرير", "دولاب", "كومودينة"], "enteredBy": "عبدالعزيز دخيل الشعلان"}, {"id": "1-3-4-09", "building": 1, "floor": 3, "section": 4, "roomno": "09", "code": "3-4-09", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["سرير", "دولاب"], "enteredBy": "عبدالعزيز دخيل الشعلان"}, {"id": "1-3-4-10", "building": 1, "floor": 3, "section": 4, "roomno": "10", "code": "3-4-10", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["سرير", "دولاب"], "enteredBy": "عبدالعزيز دخيل الشعلان"}, {"id": "1-4-1-01", "building": 1, "floor": 4, "section": 1, "roomno": "01", "code": "4-1-01", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["مكتب", "كرسي"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "1-4-1-02", "building": 1, "floor": 4, "section": 1, "roomno": "02", "code": "4-1-02", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["دولاب", "كومودينة", "مكتب", "كرسي"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "1-4-1-03", "building": 1, "floor": 4, "section": 1, "roomno": "03", "code": "4-1-03", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["دولاب", "سرير", "كومودينة", "مكتب", "كرسي"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "1-4-1-04", "building": 1, "floor": 4, "section": 1, "roomno": "04", "code": "4-1-04", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["دولاب", "مكتب", "كرسي"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "1-4-1-05", "building": 1, "floor": 4, "section": 1, "roomno": "05", "code": "4-1-05", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["كومودينة", "مكتب", "كرسي"], "enteredBy": "يزيد كنان الغامدي"}, {"id": "1-4-1-06", "building": 1, "floor": 4, "section": 1, "roomno": "06", "code": "4-1-06", "type": "سكنية", "reason": "مفروشات", "maintItems": [], "furnItems": ["دولاب", "سرير", "كومودينة", "مكتب", "كرسي", "ستارة"], "enteredBy": "عبدالعزيز دخيل الشعلان"}];
+const LS_KEY = "housing_recheck_" + "نواف_الحارثي";
+const OUTBOX_KEY = LS_KEY + "_outbox";
+
+let saved={}, outbox=[];
+try{ saved=JSON.parse(localStorage.getItem(LS_KEY))||{}; }catch(e){ saved={}; }
+try{ outbox=JSON.parse(localStorage.getItem(OUTBOX_KEY))||[]; }catch(e){ outbox=[]; }
+
+const MAINT_ICON={'سباكة مطبخ':'🚰','سباكة دورة مياة':'🚿','اصلاح تكييف':'❄️','اصلاح باب':'🚪','كهرباء':'💡','نجارة':'🪚','حدادة':'🔧','مقفلة':'🔒'};
+const FURN_ICON={'مكتب':'🗄️','كرسي':'🪑','كومودينة':'🛋️','سرير':'🛏️','دولاب':'🚪','ستارة':'🪟'};
+const AR={0:'٠',1:'١',2:'٢',3:'٣',4:'٤',5:'٥',6:'٦',7:'٧',8:'٨',9:'٩'};
+const arNum=n=>String(n).replace(/[0-9]/g,d=>AR[d]||d);
+
+function persist(){ localStorage.setItem(LS_KEY,JSON.stringify(saved)); }
+function persistOutbox(){ localStorage.setItem(OUTBOX_KEY,JSON.stringify(outbox)); }
+function rec(id){ return saved[id]||null; }
+function toast(m){ const t=document.getElementById('toast'); t.textContent=m; t.classList.add('show'); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),1700); }
+
+// ---- derived status ----
+function furnTotal(r){ return r.furnItems?r.furnItems.length:0; }
+function furnDoneCount(r){ const rc=rec(r.id)||{}; let d=0; (r.furnItems||[]).forEach(it=>{ if(rc.furn&&rc.furn[it]) d++; }); return d; }
+function furnitureDone(r){ const t=furnTotal(r); return t===0 || furnDoneCount(r)===t; }
+function needsMaintenance(r){ return !!(r.maintItems && r.maintItems.length); }
+function statusOf(r){ if(!furnitureDone(r)) return 'incomplete'; if(needsMaintenance(r)) return 'partial'; return 'complete'; }
+
+// ---- filters ----
+(function(){
+  const put=(sel,vals,fmt)=>{ const el=document.getElementById(sel); vals.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=fmt?fmt(v):v;el.appendChild(o);}); };
+  put('f-building',[...new Set(SEED.map(r=>r.building))].sort((a,b)=>a-b),v=>'مبنى '+arNum(v));
+  put('f-floor',[...new Set(SEED.map(r=>r.floor))].sort((a,b)=>a-b),v=>'الدور '+arNum(v));
+  put('f-furn',[...new Set(SEED.flatMap(r=>r.furnItems))].sort());
+})();
+function filtered(){
+  const g=id=>document.getElementById(id).value;
+  const b=g('f-building'),fl=g('f-floor'),st=g('f-state'),mt=g('f-furn'),q=g('f-search').trim();
+  return SEED.filter(r=>{
+    if(b&&String(r.building)!==b)return false;
+    if(fl&&String(r.floor)!==fl)return false;
+    if(mt&&!r.furnItems.includes(mt))return false;
+    if(q&&!(r.code.includes(q)||r.type.includes(q)))return false;
+    if(st && statusOf(r)!==st) return false;
+    return true;
+  });
+}
+function stateBadge(r){ const s=statusOf(r),t=furnTotal(r),d=furnDoneCount(r);
+  if(s==='complete') return '<span class="state ready">مكتملة</span>';
+  if(s==='partial') return '<span class="state partial">مكتملة جزئيًا</span>';
+  return `<span class="state notready">غير مكتملة · ${arNum(d)}/${arNum(t)}</span>`; }
+
+function taskSection(title,items,icons,kind,rc,id){
+  if(!items.length) return `<div class="tasksec"><div class="sechead"><h4>${title}</h4></div><div class="none-req">لا يوجد بند مطلوب.</div></div>`;
+  const store=rc[kind]||{}, done=items.filter(it=>store[it]).length, all=done===items.length;
+  const cells=items.map(it=>{const on=!!store[it];
+    return `<div class="task ${on?'done':''}" onclick="toggleTask('${id}','${kind}','${it.replace(/'/g,"\\'")}')"><span class="box">${on?'✓':''}</span><span class="ico">${icons[it]||'•'}</span><span class="lbl">${it}</span></div>`;}).join('');
+  return `<div class="tasksec"><div class="sechead"><h4>${title}</h4><span class="mini ${all?'all':''}">${arNum(done)}/${arNum(items.length)}</span></div><div class="taskgrid">${cells}</div></div>`;
+}
+function furnSection(r,rc){
+  const items=r.furnItems||[];
+  if(!items.length) return `<div class="tasksec"><div class="sechead"><h4>بنود المفروشات</h4></div><div class="none-req">لا يوجد بند مفروشات لهذه الغرفة.</div></div>`;
+  const store=rc.furn||{}, done=items.filter(it=>store[it]).length, all=done===items.length;
+  const cells=items.map(it=>{const on=!!store[it];
+    return `<div class="task ${on?'done':''}" onclick="toggleFurn('${r.id}','${it.replace(/'/g,"\\'")}')"><span class="box">${on?'✓':''}</span><span class="ico">${FURN_ICON[it]||'•'}</span><span class="lbl">${it}</span></div>`;}).join('');
+  return `<div class="tasksec"><div class="sechead"><h4>بنود المفروشات</h4><span class="mini ${all?'all':''}">${arNum(done)}/${arNum(items.length)}</span></div><div class="taskgrid">${cells}</div></div>`;
+}
+function maintInfo(r){
+  const items=r.maintItems||[];
+  if(!items.length) return '';
+  const chips=items.map(it=>`<span class="mchip">${MAINT_ICON[it]||'•'} ${it}</span>`).join('');
+  return `<div class="tasksec maint-info"><div class="sechead"><h4>صيانة مطلوبة</h4><span class="mini info">خارج مهمة اليوم</span></div><div class="mchips">${chips}</div><div class="maint-note">تُعالَج ضمن أعمال الصيانة لاحقًا — تبقى الغرفة «مكتملة جزئيًا» حتى تُنجز.</div></div>`;
+}
+function cardHTML(r){
+  const rc=rec(r.id)||{}, open=rc._open?'open':'';
+  return `<div class="card ${open}" data-id="${r.id}">
+    <div class="top" onclick="toggleCard('${r.id}')">
+      <span class="chip-code">${r.code}</span>
+      <div class="meta"><div class="line1">${r.type} · مبنى ${arNum(r.building)} · الدور ${arNum(r.floor)}</div>
+      <div class="line2">القسم ${r.section?arNum(r.section):'—'}</div></div>
+      ${rc.synced?'<span class="synced">✓</span>':''}
+      ${stateBadge(r)}<span class="caret">▾</span>
+    </div>
+    <div class="detail">
+      <div class="reasonbox">سبب عدم الاكتمال: <b>${r.reason||'—'}</b></div>
+      <p class="hint">أشّر المفروشات المنجزة. إذا اكتملت المفروشات وبقيت صيانة مطلوبة تُعتبر الغرفة «مكتملة جزئيًا».</p>
+      ${furnSection(r,rc)}
+      ${maintInfo(r)}
+      <div class="field"><label>ملاحظات (اختياري)</label><textarea onchange="setField('${r.id}','notes',this.value)" placeholder="ما المتبقي أو أي ملاحظة...">${rc.notes||''}</textarea></div>
+      <div class="field"><label>اسم المراجِع</label><input type="text" onchange="setField('${r.id}','checker',this.value)" value="${rc.checker||REVIEWER}"></div>
+      <div class="saverow"><button class="btn primary" onclick="saveRoom('${r.id}')">حفظ</button>
+        ${rc.savedAt?`<span class="saved-tag">✓ ${new Date(rc.savedAt).toLocaleString('ar-SA')}</span>`:''}
+      </div>
+    </div></div>`;
+}
+function render(){
+  const rows=filtered();
+  document.getElementById('list').innerHTML=rows.length?rows.map(cardHTML).join(''):'<div class="empty-list">لا توجد غرف مطابقة للتصفية.</div>';
+  updateMetrics();
+}
+function updateMetrics(){
+  const total=SEED.length; let comp=0,part=0,inc=0;
+  SEED.forEach(r=>{ const s=statusOf(r); if(s==='complete')comp++; else if(s==='partial')part++; else inc++; });
+  document.getElementById('m-total').textContent=arNum(total);
+  document.getElementById('m-complete').textContent=arNum(comp);
+  document.getElementById('m-partial').textContent=arNum(part);
+  document.getElementById('m-incomplete').textContent=arNum(inc);
+  const furnDoneRooms=comp+part;
+  const pct=total?Math.round(furnDoneRooms/total*100):0;
+  document.getElementById('p-fill').style.width=pct+'%';
+  document.getElementById('p-lbl').textContent=arNum(pct)+'% من غرفك تم إنجاز مفروشاتها ('+arNum(furnDoneRooms)+' من '+arNum(total)+')';
+}
+function toggleCard(id){const r=saved[id]||(saved[id]={});r._open=!r._open;persist();render();}
+function markChanged(r){ r.synced=false; }
+function toggleTask(id,kind,item){const r=saved[id]||(saved[id]={});r._open=true;const s=r[kind]||(r[kind]={});s[item]=!s[item];markChanged(r);persist();render();enqueue(id);scheduleFlush();}
+function toggleFurn(id,item){const r=saved[id]||(saved[id]={});r._open=true;const s=r.furn||(r.furn={});s[item]=!s[item];markChanged(r);persist();render();enqueue(id);scheduleFlush();}
+function setField(id,key,val){const r=saved[id]||(saved[id]={});r[key]=val;markChanged(r);persist();enqueue(id);scheduleFlush();}
+
+function roomById(id){return SEED.find(x=>x.id===id);}
+function payload(id){
+  const r=roomById(id), rc=rec(id)||{};
+  const md=(r.maintItems||[]).filter(it=>rc.maint&&rc.maint[it]);
+  const fd=(r.furnItems||[]).filter(it=>rc.furn&&rc.furn[it]);
+  return {reviewer:REVIEWER, room_id:id, building:r.building, floor:r.floor, section:r.section, room_code:r.code, type:r.type,
+    recheck_result: statusOf(r)==='complete'?'مكتملة':(statusOf(r)==='partial'?'مكتملة جزئيًا':'غير مكتملة'),
+    maintenance_required:(r.maintItems||[]).join('، '), maintenance_done:md.join('، '),
+    maintenance_pending:(r.maintItems||[]).filter(x=>!md.includes(x)).join('، '),
+    furniture_required:(r.furnItems||[]).join('، '), furniture_done:fd.join('، '),
+    furniture_pending:(r.furnItems||[]).filter(x=>!fd.includes(x)).join('، '),
+    notes:rc.notes||'', checker:rc.checker||REVIEWER};
+}
+function saveRoom(id){ const r=saved[id]||(saved[id]={}); r.savedAt=Date.now(); markChanged(r); persist(); enqueue(id); render(); flush(); const _s=statusOf(roomById(id)); toast('تم الحفظ — '+(_s==='complete'?'مكتملة':_s==='partial'?'مكتملة جزئيًا':'غير مكتملة')); }
+function enqueue(id){ if(!outbox.includes(id)) outbox.push(id); persistOutbox(); updateSyncUI(); }
+
+let flushTimer=null;
+function scheduleFlush(){ if(!SHEET_ENDPOINT)return; clearTimeout(flushTimer); flushTimer=setTimeout(flush,2500); }
+function updateSyncUI(){
+  const dot=document.getElementById('sync-dot'),msg=document.getElementById('sync-msg');
+  const synced = SHEET_ENDPOINT && outbox.length===0;
+  dot.className='dotst '+(synced?'st-ok':'st-err');
+  msg.textContent = synced ? 'متزامن' : 'غير متزامن';
+}
+function manualSync(){ if(!SHEET_ENDPOINT) return; if(outbox.length){ flush(); toast('جارٍ المزامنة'); } }
+async function flush(){
+  if(!SHEET_ENDPOINT||!outbox.length){updateSyncUI();return;}
+  const batch=outbox.slice(), rows=batch.map(payload);
+  try{
+    await fetch(SHEET_ENDPOINT,{method:'POST',mode:'no-cors',body:JSON.stringify(rows)});
+    batch.forEach(id=>{const r=saved[id];if(r)r.synced=true;});
+    outbox=outbox.filter(id=>!batch.includes(id));
+    persist();persistOutbox();updateSyncUI();render();
+  }catch(e){ updateSyncUI(); }
+}
+
+
+['f-building','f-floor','f-state','f-furn'].forEach(id=>document.getElementById(id).onchange=render);
+document.getElementById('f-search').oninput=render;
+window.addEventListener('online',flush);
+updateSyncUI(); render(); flush();
+</script>
+</body>
+</html>
