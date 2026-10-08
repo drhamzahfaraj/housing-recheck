@@ -176,6 +176,9 @@ try{ outbox=JSON.parse(localStorage.getItem(OUTBOX_KEY))||[]; }catch(e){ outbox=
 
 const MAINT_ICON={'سباكة مطبخ':'🚰','سباكة دورة مياة':'🚿','اصلاح تكييف':'❄️','اصلاح باب':'🚪','كهرباء':'💡','نجارة':'🪚','حدادة':'🔧','مقفلة':'🔒'};
 const FURN_ICON={'مكتب':'🗄️','كرسي':'🪑','كومودينة':'🛋️','سرير':'🛏️','دولاب':'🚪','ستارة':'🪟'};
+const MAINT_MAP={'اصلاح تكييف':'ac','اصلاح باب':'door_lock','نجارة':'carpentry','سباكة دورة مياة':'plumb_bath','سباكة مطبخ':'plumb_kitchen','كهرباء':'electrical','حدادة':'metalwork','مقفلة':'door_lock'};
+const FURN_MAP={'كرسي':'chair','سرير':'bed','مكتب':'desk','ستارة':'curtains','كومودينة':'nightstand','دولاب':'wardrobe'};
+const KINDLBL={residential:'سكنية',storage:'مستودع',club:'نادي',training:'قاعة تدريب',shared:'مرافق مشتركة',restaurant:'مطعم'};
 const AR={0:'٠',1:'١',2:'٢',3:'٣',4:'٤',5:'٥',6:'٦',7:'٧',8:'٨',9:'٩'};
 const arNum=n=>String(n).replace(/[0-9]/g,d=>AR[d]||d);
 
@@ -191,7 +194,9 @@ function furnitureDone(r){ const t=furnTotal(r); return t===0 || furnDoneCount(r
 function maintTotal(r){ return r.maintItems?r.maintItems.length:0; }
 function maintDoneCount(r){ const rc=rec(r.id)||{}; let d=0; (r.maintItems||[]).forEach(it=>{ if(rc.maint&&rc.maint[it]) d++; }); return d; }
 function needsMaintenance(r){ return !!(r.maintItems && r.maintItems.length); }
-function isRes(r){ return r.kind?(r.kind==='residential'):(r.type==='سكنية'); }
+function effKind(r){ const rc=rec(r.id)||{}; return rc.kind||r.kind||(r.type==='سكنية'?'residential':'storage'); }
+function altKind(r){ return (r.kind && r.kind!=='residential') ? r.kind : 'storage'; }
+function isRes(r){ return effKind(r)==='residential'; }
 function selDone(r){ const rc=rec(r.id)||{}; return (isRes(r)?rc.occupancy:rc.svc)?1:0; }
 function statusOf(r){ const total=furnTotal(r)+maintTotal(r)+1, done=furnDoneCount(r)+maintDoneCount(r)+selDone(r);
   if(done>=total) return 'complete'; if(done===0) return 'incomplete'; return 'partial'; }
@@ -251,17 +256,22 @@ function svcUI(r,rc){
   return `<div class="tasksec"><div class="sechead"><h4>حالة الغرفة</h4></div><div class="occ-row">${opt('ready','جاهزة','✅')}${opt('notready','تحتاج تجهيز','🛠️')}</div></div>`;
 }
 function setSvc(id,val){const r=saved[id]||(saved[id]={});r._open=true;r.svc=(r.svc===val?'':val);markChanged(r);persist();render();enqueue(id);scheduleFlush();}
+function kindUI(r,rc){ const cur=effKind(r), alt=altKind(r);
+  const opt=(v,ic)=>`<button type="button" class="occ-btn ${cur===v?'on':''}" onclick="setKind('${r.id}','${v}')">${ic} ${KINDLBL[v]||v}</button>`;
+  return `<div class="tasksec"><div class="sechead"><h4>نوع الغرفة</h4></div><div class="occ-row">${opt('residential','🏠')}${opt(alt,'📦')}</div></div>`; }
+function setKind(id,val){const r=saved[id]||(saved[id]={});r._open=true;r.kind=val; if(val!=='residential')r.occupancy=''; else r.svc=''; markChanged(r);persist();render();enqueue(id);scheduleFlush();}
 function cardHTML(r){
   const rc=rec(r.id)||{}, open=rc._open?'open':'';
   return `<div class="card ${open}" data-id="${r.id}">
     <div class="top" onclick="toggleCard('${r.id}')">
       <span class="chip-code">${r.code}</span>
-      <div class="meta"><div class="line1">${r.type}</div>
+      <div class="meta"><div class="line1">${KINDLBL[effKind(r)]||r.type}</div>
       <div class="line2">المبنى ${arNum(r.building)} · الدور ${r.floorLabel==='G'?'G':arNum(r.floorLabel)} · الجزء ${arNum(r.section)} · الغرفة ${arNum(r.roomno)}</div></div>
       ${rc.synced?'<span class="synced">✓</span>':''}
       ${stateBadge(r)}<span class="caret">▾</span>
     </div>
     <div class="detail">
+      ${kindUI(r,rc)}
       ${(furnTotal(r)+maintTotal(r))===0
         ? (isRes(r)
             ? `<div class="reasonbox ${rc.occupancy?'ready':'await'}">${rc.occupancy?'✅ الغرفة مكتملة — تم تسجيل الإشغال.':'⬜ الغرفة جاهزة — سجّل الإشغال لاعتبارها مكتملة.'}</div>${occupancyUI(r,rc)}`
@@ -305,7 +315,7 @@ function payload(id){
   const fd=(r.furnItems||[]).filter(it=>rc.furn&&rc.furn[it]);
   const _st=statusOf(r);
   const _rr=(!isRes(r)&&rc.svc==='notready')?'غير مكتملة':(_st==='complete'?'مكتملة':(_st==='partial'?'مكتملة جزئيًا':'غير مكتملة'));
-  return {reviewer:REVIEWER, room_id:id, building:r.building, floor:r.floor, section:r.section, room_code:r.code, type:r.type, kind:r.kind||'residential',
+  return {reviewer:REVIEWER, room_id:id, building:r.building, floor:r.floor, section:r.section, room_code:r.code, type:r.type, kind:effKind(r),
     recheck_result: _rr,
     maintenance_required:(r.maintItems||[]).join('، '), maintenance_done:md.join('، '),
     maintenance_pending:(r.maintItems||[]).filter(x=>!md.includes(x)).join('، '),
@@ -357,11 +367,46 @@ function confirmSaved(batch){
 }
 
 
+// JSONP GET + reconcile with the sheet so already-recorded rooms aren't redone
+function jsonpGet(url){ return new Promise(resolve=>{ const cb='__lg'+Math.random().toString(36).slice(2); let sc;
+  const done=()=>{ try{delete window[cb];}catch(e){} if(sc&&sc.parentNode)sc.parentNode.removeChild(sc); };
+  const timer=setTimeout(()=>{done();resolve(null);},12000);
+  window[cb]=d=>{ clearTimeout(timer); done(); resolve(d); };
+  sc=document.createElement('script'); sc.onerror=()=>{clearTimeout(timer);done();resolve(null);};
+  sc.src=url+(url.indexOf('?')<0?'?':'&')+'callback='+cb+'&_='+Date.now(); document.body.appendChild(sc); }); }
+async function loadSheet(){
+  if(!SHEET_ENDPOINT) return;
+  const data=await jsonpGet(SHEET_ENDPOINT); if(!data||!data.rooms) return;
+  const byRID={}; data.rooms.forEach(sr=>{ if(sr.RoomID) byRID[String(sr.RoomID)]=sr; });
+  let applied=0;
+  SEED.forEach(seed=>{
+    const sr=byRID[seed.id]; if(!sr) return;
+    const rr=String(sr.RecheckResult||''), occ=sr.Occupancy||'', chk=sr.Checker||'';
+    if(!rr && !occ && !chk) return;
+    if(outbox.includes(seed.id)) return;
+    const rc=saved[seed.id]||(saved[seed.id]={});
+    if(rc.savedAt) return;
+    if(sr.Kind && sr.Kind!==seed.kind) rc.kind=sr.Kind;
+    const resNow=((rc.kind||seed.kind)==='residential');
+    if(resNow){ rc.occupancy=occ; rc.svc=''; }
+    else { rc.svc=(rr.indexOf('غير')>=0?'notready':(rr.indexOf('مكتمل')>=0?'ready':'')); rc.occupancy=''; }
+    const pendF=String(sr.Furnishings||'').split(';').filter(Boolean), pendM=String(sr.Maintenance||'').split(';').filter(Boolean);
+    rc.furn=rc.furn||{}; (seed.furnItems||[]).forEach(it=>{ const k=FURN_MAP[it]; rc.furn[it]=!(k&&pendF.includes(k)); });
+    rc.maint=rc.maint||{}; (seed.maintItems||[]).forEach(it=>{ const k=MAINT_MAP[it]; rc.maint[it]=!(k&&pendM.includes(k)); });
+    rc.checker=chk||rc.checker; if(sr.Notes) rc.notes=sr.Notes;
+    rc.synced=true; rc.confirmed=true;
+    const complete=(rr.indexOf('غير')<0 && rr.indexOf('جزئ')<0 && rr.indexOf('مكتمل')>=0);
+    if(complete) rc.savedAt=Date.now();
+    applied++;
+  });
+  if(applied) persist();
+  render();
+}
 ['f-building','f-floor'].forEach(id=>document.getElementById(id).onchange=render);
-window.addEventListener('online',()=>{ toast('عاد الاتصال — جارٍ رفع المحفوظ'); flush(); });
-document.addEventListener('visibilitychange',()=>{ if(!document.hidden) flush(); });
+window.addEventListener('online',()=>{ toast('عاد الاتصال — جارٍ رفع المحفوظ'); flush(); loadSheet(); });
+document.addEventListener('visibilitychange',()=>{ if(!document.hidden){ flush(); loadSheet(); } });
 setInterval(()=>{ if(outbox.length) flush(); }, 20000);
-updateSyncUI(); render(); flush();
+updateSyncUI(); render(); loadSheet(); flush();
 </script>
 </body>
 </html>
