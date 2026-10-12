@@ -129,6 +129,8 @@ footer{margin-top:22px;text-align:center;color:var(--muted);font-size:12px}
   .taskgrid{grid-template-columns:repeat(2,1fr)}
   .card .top{min-height:auto}
 }
+.btn.off,.btn[disabled]{opacity:.45;cursor:not-allowed}
+.save-missing{display:block;font-size:12px;color:#b45309;font-weight:700;margin-top:6px}
 </style>
 </head>
 <body>
@@ -202,13 +204,30 @@ function isRes(r){ return effKind(r)==='residential'; }
 function selDone(r){ const rc=rec(r.id)||{}; return (isRes(r)? (rc.occupancy?1:0) : (rc.svc==='ready'?1:0)); }
 function statusOf(r){ const total=furnTotal(r)+maintTotal(r)+1, done=furnDoneCount(r)+maintDoneCount(r)+selDone(r);
   if(done>=total) return 'complete'; if(done===0) return 'incomplete'; return 'partial'; }
+function canSave(r){ const rc=rec(r.id)||{};
+  const furnOK=furnDoneCount(r)===furnTotal(r), maintOK=maintDoneCount(r)===maintTotal(r);
+  const selOK=isRes(r)?!!rc.occupancy:!!rc.svc;
+  return furnOK && maintOK && selOK; }
+function missingText(r){ const rc=rec(r.id)||{}; const p=[];
+  if(isRes(r)? !rc.occupancy : !rc.svc) p.push(isRes(r)?'الإشغال':'حالة الغرفة');
+  const fm=furnTotal(r)-furnDoneCount(r), mm=maintTotal(r)-maintDoneCount(r);
+  if(fm>0) p.push(arNum(fm)+' مفروشات'); if(mm>0) p.push(arNum(mm)+' صيانة');
+  return 'أكمل للحفظ: '+p.join(' · '); }
 
 // ---- filters ----
-(function(){
-  const put=(sel,vals,fmt)=>{ const el=document.getElementById(sel); vals.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=fmt?fmt(v):v;el.appendChild(o);}); };
-  put('f-building',[...new Set(SEED.map(r=>r.building))].sort((a,b)=>a-b),v=>'مبنى '+arNum(v));
-  put('f-floor',['G','1','2','3','4'].filter(v=>SEED.some(r=>r.floorLabel===v)),v=>'الدور '+(v==='G'?'G':arNum(v)));
-})();
+function outstandingRooms(){ return SEED.filter(r=>{ const rc=rec(r.id); return !(rc&&rc.savedAt); }); }
+function populateFilters(){
+  const rooms=outstandingRooms();
+  const bsel=document.getElementById('f-building'), fsel=document.getElementById('f-floor');
+  if(!bsel||!fsel) return;
+  const bprev=bsel.value, fprev=fsel.value;
+  const bs=[...new Set(rooms.map(r=>r.building))].sort((a,b)=>a-b);
+  const fs=['G','1','2','3','4'].filter(v=>rooms.some(r=>r.floorLabel===v));
+  bsel.innerHTML='<option value="">الكل</option>'+bs.map(v=>'<option value="'+v+'">مبنى '+arNum(v)+'</option>').join('');
+  fsel.innerHTML='<option value="">الكل</option>'+fs.map(v=>'<option value="'+v+'">الدور '+(v==='G'?'G':arNum(v))+'</option>').join('');
+  if(bs.map(String).includes(bprev)) bsel.value=bprev;
+  if(fs.includes(fprev)) fsel.value=fprev;
+}
 function filtered(){
   const g=id=>document.getElementById(id).value;
   const b=g('f-building'),fl=g('f-floor');
@@ -251,17 +270,17 @@ function occupancyUI(r,rc){
   const opt=(v,l,ic)=>`<button type="button" class="occ-btn ${cur===v?'on':''}" onclick="setOccupancy('${r.id}','${v}')">${ic} ${l}</button>`;
   return `<div class="tasksec"><div class="sechead"><h4>إشغال الغرفة</h4></div><div class="occ-row">${opt('student','طالب','🎓')}${opt('worker','عامل','👷')}${opt('empty','فارغة','⬜')}</div></div>`;
 }
-function setOccupancy(id,val){const r=saved[id]||(saved[id]={});r._open=true;r.occupancy=(r.occupancy===val?'':val);markChanged(r);persist();render();enqueue(id);scheduleFlush();}
+function setOccupancy(id,val){const r=saved[id]||(saved[id]={});r._open=true;r.occupancy=(r.occupancy===val?'':val);markChanged(r);persist();render();}
 function svcUI(r,rc){
   const cur=rc.svc||'';
   const opt=(v,l,ic)=>`<button type="button" class="occ-btn ${cur===v?'on':''}" onclick="setSvc('${r.id}','${v}')">${ic} ${l}</button>`;
   return `<div class="tasksec"><div class="sechead"><h4>حالة الغرفة</h4></div><div class="occ-row">${opt('ready','جاهزة','✅')}${opt('notready','تحتاج تجهيز','🛠️')}</div></div>`;
 }
-function setSvc(id,val){const r=saved[id]||(saved[id]={});r._open=true;r.svc=(r.svc===val?'':val);markChanged(r);persist();render();enqueue(id);scheduleFlush();}
+function setSvc(id,val){const r=saved[id]||(saved[id]={});r._open=true;r.svc=(r.svc===val?'':val);markChanged(r);persist();render();}
 function kindUI(r,rc){ const cur=effKind(r), alt=altKind(r);
   const opt=(v,ic)=>`<button type="button" class="occ-btn ${cur===v?'on':''}" onclick="setKind('${r.id}','${v}')">${ic} ${KINDLBL[v]||v}</button>`;
   return `<div class="tasksec"><div class="sechead"><h4>نوع الغرفة</h4></div><div class="occ-row">${opt('residential','🏠')}${opt(alt,'📦')}</div></div>`; }
-function setKind(id,val){const r=saved[id]||(saved[id]={});r._open=true;r.kind=val; if(val!=='residential')r.occupancy=''; else r.svc=''; markChanged(r);persist();render();enqueue(id);scheduleFlush();}
+function setKind(id,val){const r=saved[id]||(saved[id]={});r._open=true;r.kind=val; if(val!=='residential')r.occupancy=''; else r.svc=''; markChanged(r);persist();render();}
 function cardHTML(r){
   const rc=rec(r.id)||{}, open=rc._open?'open':'';
   return `<div class="card ${open}" data-id="${r.id}">
@@ -269,7 +288,6 @@ function cardHTML(r){
       <span class="chip-code">${r.code}</span>
       <div class="meta"><div class="line1">${KINDLBL[effKind(r)]||r.type}</div>
       <div class="line2">المبنى ${arNum(r.building)} · الدور ${r.floorLabel==='G'?'G':arNum(r.floorLabel)} · الجزء ${arNum(r.section)} · الغرفة ${arNum(r.roomno)}</div></div>
-      ${rc.synced?'<span class="synced">✓</span>':''}
       ${stateBadge(r)}<span class="caret">▾</span>
     </div>
     <div class="detail">
@@ -281,12 +299,14 @@ function cardHTML(r){
         : `<div class="reasonbox">سبب عدم الاكتمال: <b>${r.reason||'—'}</b></div>${isRes(r)?occupancyUI(r,rc):svcUI(r,rc)}<p class="hint">أشّر البنود المنجزة (مفروشات وصيانة) ${isRes(r)?'وسجّل الإشغال':'وحدّد الحالة'}. تُعتبر الغرفة «مكتملة» عند إنجاز جميع البنود.</p>${(r.furnItems&&r.furnItems.length)?furnSection(r,rc):''}${(r.maintItems&&r.maintItems.length)?taskSection('صيانة مطلوبة', r.maintItems||[], MAINT_ICON, 'maint', rc, r.id):''}`}
       <div class="field"><label>ملاحظات (اختياري)</label><textarea onchange="setField('${r.id}','notes',this.value)" placeholder="ما المتبقي أو أي ملاحظة...">${rc.notes||''}</textarea></div>
       <div class="field"><label>اسم المراجِع</label><input type="text" onchange="setField('${r.id}','checker',this.value)" value="${rc.checker||REVIEWER}"></div>
-      <div class="saverow"><button class="btn primary" onclick="saveRoom('${r.id}')">حفظ</button>
+      <div class="saverow"><button class="btn primary ${canSave(r)?'':'off'}" ${canSave(r)?'':'disabled'} onclick="saveRoom('${r.id}')">حفظ</button>
+        ${canSave(r)?'':`<span class="save-missing">${missingText(r)}</span>`}
         ${rc.savedAt?`<span class="saved-tag">✓ ${new Date(rc.savedAt).toLocaleString('ar-SA')}</span>`:''}
       </div>
     </div></div>`;
 }
 function render(){
+  populateFilters();
   const rows=filtered();
   const allHandled=SEED.some(r=>{const rc=rec(r.id);return rc&&rc.savedAt;});
   const emptyMsg=allHandled?'تم حفظ جميع الغرف ✓':'لا توجد غرف مطابقة للتصفية.';
@@ -306,9 +326,9 @@ function updateMetrics(){
 }
 function toggleCard(id){const r=saved[id]||(saved[id]={});r._open=!r._open;persist();render();}
 function markChanged(r){ r.synced=false; }
-function toggleTask(id,kind,item){const r=saved[id]||(saved[id]={});r._open=true;const s=r[kind]||(r[kind]={});s[item]=!s[item];markChanged(r);persist();render();enqueue(id);scheduleFlush();}
-function toggleFurn(id,item){const r=saved[id]||(saved[id]={});r._open=true;const s=r.furn||(r.furn={});s[item]=!s[item];markChanged(r);persist();render();enqueue(id);scheduleFlush();}
-function setField(id,key,val){const r=saved[id]||(saved[id]={});r[key]=val;markChanged(r);persist();enqueue(id);scheduleFlush();}
+function toggleTask(id,kind,item){const r=saved[id]||(saved[id]={});r._open=true;const s=r[kind]||(r[kind]={});s[item]=!s[item];markChanged(r);persist();render();}
+function toggleFurn(id,item){const r=saved[id]||(saved[id]={});r._open=true;const s=r.furn||(r.furn={});s[item]=!s[item];markChanged(r);persist();render();}
+function setField(id,key,val){const r=saved[id]||(saved[id]={});r[key]=val;markChanged(r);persist();}
 
 function roomById(id){return SEED.find(x=>x.id===id);}
 function payload(id){
@@ -325,7 +345,7 @@ function payload(id){
     furniture_pending:(r.furnItems||[]).filter(x=>!fd.includes(x)).join('، '),
     occupancy:(isRes(r)?(rc.occupancy||''):''), svc:(isRes(r)?'':(rc.svc||'')), notes:rc.notes||'', checker:rc.checker||REVIEWER};
 }
-function saveRoom(id){ const r=saved[id]||(saved[id]={}); r.savedAt=Date.now(); markChanged(r); persist(); enqueue(id); render(); flush(); const _s=statusOf(roomById(id)); const sv=(_s==='complete'?'مكتملة':_s==='partial'?'مكتملة جزئيًا':'غير مكتملة'); toast(navigator.onLine===false?('تم الحفظ محليًا ('+sv+') — سيُرفع تلقائيًا عند عودة الاتصال'):('تم الحفظ — '+sv)); }
+function saveRoom(id){ const _r=roomById(id); if(!canSave(_r)){ toast(missingText(_r),true); return; } const r=saved[id]||(saved[id]={}); r.savedAt=Date.now(); markChanged(r); persist(); enqueue(id); render(); flush(); const _s=statusOf(roomById(id)); const sv=(_s==='complete'?'مكتملة':_s==='partial'?'مكتملة جزئيًا':'غير مكتملة'); toast(navigator.onLine===false?('تم الحفظ محليًا ('+sv+') — سيُرفع تلقائيًا عند عودة الاتصال'):('تم الحفظ — '+sv)); }
 function enqueue(id){ if(!outbox.includes(id)) outbox.push(id); persistOutbox(); updateSyncUI(); }
 
 let flushTimer=null;
