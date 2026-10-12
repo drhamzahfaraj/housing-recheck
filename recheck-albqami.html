@@ -178,6 +178,8 @@ const MAINT_ICON={'سباكة مطبخ':'🚰','سباكة دورة مياة':'�
 const FURN_ICON={'مكتب':'🗄️','كرسي':'🪑','كومودينة':'🛋️','سرير':'🛏️','دولاب':'🚪','ستارة':'🪟'};
 const MAINT_MAP={'اصلاح تكييف':'ac','اصلاح باب':'door_lock','نجارة':'carpentry','سباكة دورة مياة':'plumb_bath','سباكة مطبخ':'plumb_kitchen','كهرباء':'electrical','حدادة':'metalwork','مقفلة':'door_lock'};
 const FURN_MAP={'كرسي':'chair','سرير':'bed','مكتب':'desk','ستارة':'curtains','كومودينة':'nightstand','دولاب':'wardrobe'};
+const KEY2FURN={chair:'كرسي',bed:'سرير',desk:'مكتب',curtains:'ستارة',nightstand:'كومودينة',wardrobe:'دولاب'};
+const KEY2MAINT={ac:'اصلاح تكييف',door_lock:'اصلاح باب',carpentry:'نجارة',plumb_bath:'سباكة دورة مياة',plumb_kitchen:'سباكة مطبخ',electrical:'كهرباء',metalwork:'حدادة'};
 const KINDLBL={residential:'سكنية',storage:'مستودع',club:'نادي',training:'قاعة تدريب',shared:'مرافق مشتركة',restaurant:'مطعم'};
 const AR={0:'٠',1:'١',2:'٢',3:'٣',4:'٤',5:'٥',6:'٦',7:'٧',8:'٨',9:'٩'};
 const arNum=n=>String(n).replace(/[0-9]/g,d=>AR[d]||d);
@@ -197,7 +199,7 @@ function needsMaintenance(r){ return !!(r.maintItems && r.maintItems.length); }
 function effKind(r){ const rc=rec(r.id)||{}; return rc.kind||r.kind||(r.type==='سكنية'?'residential':'storage'); }
 function altKind(r){ return (r.kind && r.kind!=='residential') ? r.kind : 'storage'; }
 function isRes(r){ return effKind(r)==='residential'; }
-function selDone(r){ const rc=rec(r.id)||{}; return (isRes(r)?rc.occupancy:rc.svc)?1:0; }
+function selDone(r){ const rc=rec(r.id)||{}; return (isRes(r)? (rc.occupancy?1:0) : (rc.svc==='ready'?1:0)); }
 function statusOf(r){ const total=furnTotal(r)+maintTotal(r)+1, done=furnDoneCount(r)+maintDoneCount(r)+selDone(r);
   if(done>=total) return 'complete'; if(done===0) return 'incomplete'; return 'partial'; }
 
@@ -374,10 +376,10 @@ function jsonpGet(url){ return new Promise(resolve=>{ const cb='__lg'+Math.rando
   window[cb]=d=>{ clearTimeout(timer); done(); resolve(d); };
   sc=document.createElement('script'); sc.onerror=()=>{clearTimeout(timer);done();resolve(null);};
   sc.src=url+(url.indexOf('?')<0?'?':'&')+'callback='+cb+'&_='+Date.now(); document.body.appendChild(sc); }); }
-async function loadSheet(){
-  if(!SHEET_ENDPOINT) return;
-  const data=await jsonpGet(SHEET_ENDPOINT); if(!data||!data.rooms) return;
-  const byRID={}; data.rooms.forEach(sr=>{ if(sr.RoomID) byRID[String(sr.RoomID)]=sr; });
+const PRELOAD = [{"RoomID":"1-2-1-07","Kind":"residential","Status":"active","RecheckResult":"مكتملة","Occupancy":"student","Maintenance":"","Furnishings":"","Checker":"عايض نوار البقمي","Notes":""},{"RoomID":"1-3-1-01","Kind":"residential","Status":"active","RecheckResult":"مكتملة","Occupancy":"student","Maintenance":"","Furnishings":"","Checker":"عايض نوار البقمي","Notes":""},{"RoomID":"1-2-1-08","Kind":"residential","Status":"active","RecheckResult":"مكتملة","Occupancy":"student","Maintenance":"","Furnishings":"","Checker":"عايض نوار البقمي","Notes":""}];
+function applyRows(list){
+  if(!list||!list.length) return 0;
+  const byRID={}; list.forEach(sr=>{ if(sr.RoomID) byRID[String(sr.RoomID)]=sr; });
   let applied=0;
   SEED.forEach(seed=>{
     const sr=byRID[seed.id]; if(!sr) return;
@@ -391,6 +393,8 @@ async function loadSheet(){
     if(resNow){ rc.occupancy=occ; rc.svc=''; }
     else { rc.svc=(rr.indexOf('غير')>=0?'notready':(rr.indexOf('مكتمل')>=0?'ready':'')); rc.occupancy=''; }
     const pendF=String(sr.Furnishings||'').split(';').filter(Boolean), pendM=String(sr.Maintenance||'').split(';').filter(Boolean);
+    pendF.forEach(k=>{ const l=KEY2FURN[k]; if(l){ seed.furnItems=seed.furnItems||[]; if(!seed.furnItems.includes(l)) seed.furnItems.push(l); } });
+    pendM.forEach(k=>{ const l=KEY2MAINT[k]; if(l){ seed.maintItems=seed.maintItems||[]; if(!seed.maintItems.includes(l)) seed.maintItems.push(l); } });
     rc.furn=rc.furn||{}; (seed.furnItems||[]).forEach(it=>{ const k=FURN_MAP[it]; rc.furn[it]=!(k&&pendF.includes(k)); });
     rc.maint=rc.maint||{}; (seed.maintItems||[]).forEach(it=>{ const k=MAINT_MAP[it]; rc.maint[it]=!(k&&pendM.includes(k)); });
     rc.checker=chk||rc.checker; if(sr.Notes) rc.notes=sr.Notes;
@@ -400,13 +404,18 @@ async function loadSheet(){
     applied++;
   });
   if(applied) persist();
-  render();
+  return applied;
+}
+async function loadSheet(){
+  if(!SHEET_ENDPOINT) return;
+  const data=await jsonpGet(SHEET_ENDPOINT); if(!data||!data.rooms) return;
+  applyRows(data.rooms); render();
 }
 ['f-building','f-floor'].forEach(id=>document.getElementById(id).onchange=render);
 window.addEventListener('online',()=>{ toast('عاد الاتصال — جارٍ رفع المحفوظ'); flush(); loadSheet(); });
 document.addEventListener('visibilitychange',()=>{ if(!document.hidden){ flush(); loadSheet(); } });
 setInterval(()=>{ if(outbox.length) flush(); }, 20000);
-updateSyncUI(); render(); loadSheet(); flush();
+applyRows(PRELOAD); updateSyncUI(); render(); loadSheet(); flush();
 </script>
 </body>
 </html>
